@@ -39,12 +39,6 @@ html {
     cursor: pointer;
 }
 
-@mixin text-gradient($color1, $color2) {
-    background: linear-gradient(to top, $color1, $color2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 @function to-rem($original) {
     @return $original / 14px * 1rem;
 }
@@ -258,18 +252,16 @@ main {
                     margin: 0 auto;
                     text-align: center;
 
-                    * {
-                        @include text-gradient(#08d2bd, #1b9bb2);
-                    }
-
                     h4 {
                         margin-bottom: to-rem(14px);
                         font-size: to-rem(18px);
+                        color: gray;
                     }
 
                     p {
                         margin-bottom: to-rem(20px);
                         font-size: to-rem(13px);
+                        color: gray;
                     }
 
                     a {
@@ -295,17 +287,16 @@ main {
         background-color: #262a32;
 
         .wrapper {
-            padding-top: to-rem(60px);
+            padding-top: to-rem(30px);
             padding-bottom: to-rem(60px);
 
             h2 {
                 padding: to-rem(50px) 0;
                 background-color: #262a32;
-
-                @include text-gradient(#08d2bd, #1b9bb2);
-
+                color: #fff;
                 text-align: center;
                 position: relative;
+                font-weight: bold;
 
                 &::before {
                     position: absolute;
@@ -331,6 +322,7 @@ main {
                 display: flex;
                 flex-wrap: wrap;
                 margin: 0 -1%;
+                color: rgb(36, 15, 61);
 
                 .item {
                     width: 25% - 2 * 1%;
@@ -356,32 +348,39 @@ main {
 
                         .content {
                             background-image: linear-gradient(to bottom, rgba(188, 105, 137, 0.5), rgba(113, 102, 150, 0.5)), url("../img/home/items/item8.jpg");
-                            height: to-rem(361px);
+                            height: to-rem(370px);
                             border-radius: $radius $radius $radius $radius;
                             background-size: cover;
-                            padding: 150px 70px 20px 20px;
+                            padding: 150px 70px 20px 0px;
                             color: #fff;
+
+                            p {
+                                padding: 30px 0 0 0;
+                            }
                         }
                     }
 
                     h4.name {
-                        font-size: to-rem(16px);
+                        font-size: to-rem(18px);
                         width: 80%;
                         margin: 1rem auto;
+                        font-weight: normal;
                     }
 
                     span {
-                        font-size: 1rem;
+                        font-size: to-rem(18px);
+                        font-weight: bold;
                     }
 
                     .paired {
                         display: flex;
                         justify-content: center;
                         align-content: center;
+                        font-weight: bold;
 
                         * {
                             padding: to-rem(10px) to-rem(17px);
-                            border: 3px groove rgba(#000, 10%);
+                            border: 1px groove rgba(rgb(88, 85, 85), 80%);
                         }
 
                         span {
@@ -503,11 +502,13 @@ main {
             h2 {
                 font-size: to-rem(40px);
                 color: #fff;
+                font-weight: bold;
             }
 
             p {
                 font-size: to-rem(18px);
                 color: #fff;
+                font-weight: normal;
             }
 
             div.slider-arrows {
@@ -571,11 +572,16 @@ main {
 
                     h4.name {
                         width: 70%;
+                        font-size: to-rem(18px);
                         margin: 1rem auto;
+                        color: rgb(36, 15, 61);
+                        font-weight: normal;
                     }
 
                     a {
                         color: #84bc22;
+                        font-weight: bold;
+                        font-size: to-rem(18px);
                     }
                 }
             }
