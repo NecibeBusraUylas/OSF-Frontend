@@ -1,0 +1,97 @@
+// Reset styles
+@import "base/_reset.scss";
+
+// Import mixins
+@import "base/_mixins.scss";
+
+// Import variables
+@import "base/_variables.scss";
+
+/* Header ------------------------------------------------ */
+@import "./layout/header";
+
+main {
+    /* Breadcrumbs ----------------------------------------- */
+    $length: 40%;
+    $length-color: #e5e2df;
+
+    @import "./layout/breadcrumbs";
+
+    /* Info ----------------------------------------- */
+    section.not-found {
+        background-color: #fff;
+        padding: to-rem(64px) 0;
+        border-radius: $radius;
+        display: flex;
+        align-items: center;
+
+        .warning {
+            width: 40%;
+            padding: 11% 0;
+            font-size: to-rem(113px);
+            color: #84bc22;
+            user-select: none;
+            background-size: 75%;
+            background-repeat: no-repeat;
+            background-position: -55% 50%;
+        }
+
+        .info {
+            width: 60%;
+            text-align: left;
+            padding-right: to-rem(120px);
+
+            h3, h4 {
+                margin-bottom: 1.5rem;
+                font-size: to-rem(24px);
+            }
+
+            p {
+                margin-bottom: 1.5rem;
+                font-size: to-rem(16px);
+                line-height: 1.5;
+                color: #555555;
+            }
+
+            a {
+                margin-bottom: 1.5rem;
+                color: #84bc22;
+
+                &:hover {
+                    color: lighten(#84bc22, 10%);
+                }
+            }
+        }
+
+        .search {
+            position: relative;
+
+            > input {
+                border-radius: $radius + 25px;
+                border: 0.15rem solid #e8e2d6;
+                padding: to-rem(10px) to-rem(20px);
+                width: 100%;
+                color: #84bc22;
+                font-size: 1rem;
+                transition: all 0.5s ease;
+
+                &:focus {
+                    border-color: #84bc22;
+                }
+            }
+
+            > svg {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 1rem;
+                color: #4f4e4c;
+                width: to-rem(18px);
+                height: to-rem(18px);
+            }
+        }
+    }
+}
+
+/* Footer ------------------------------------------------ */
+@import "./layout/footer";

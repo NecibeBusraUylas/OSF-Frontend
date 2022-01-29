@@ -4,22 +4,28 @@
 @import "_variables.scss";
 
 html {
-    @if calc(100vw <= 1280px) {
+    font-size: 14px;
+
+    @media (min-width: 1280px) {
         font-size: 14 / 1280 * 100vw;
-    }
-    @else if calc(100vw > 1280px) {
-        font-size: 14px;
     }
 }
 
 body {
     position: relative;
+
+    &.noscroll {
+        overflow: hidden;
+    }
+}
+
+main {
+    padding-top: to-rem(83px);
 }
 
 .wrapper {
-    width: 100%;
-    padding-left: $hor-padd;
-    padding-right: $hor-padd;
+    width: 91.4%;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -27,28 +33,9 @@ section {
     overflow: hidden;
 }
 
-a, button {
+a, button, input[type="submit"] {
     display: inline-block;
     transition: all 0.5s ease;
-}
-
-%overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-    overflow: hidden;
-    background-color: #000;
-    opacity: 0;
-    visibility: hidden;
-    cursor: pointer;
-
-    &.active {
-        opacity: 0.6;
-        visibility: visible;
-    }
 }
 
 // for background images
@@ -67,14 +54,317 @@ a, button {
 }
 
 %btn {
-    display: inline-block;
     text-transform: uppercase;
-    border: 3px solid rgba(#fff, 0.5);
-    background-color: transparent;
-    border-radius: $radius + 25px;
+    font-size: to-rem(16px);
+    padding: to-rem(8px) to-rem(20px);
+    border-width: 0.15rem;
+    border-style: solid;
+    border-radius: 3.5 * $radius;
     cursor: pointer;
 }
 
 @function to-rem($original) {
     @return $original / 14px * 1rem;
+}
+
+// HTNL => any tag + single span inside
+@mixin center-round {
+    width: 100%;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+
+    > * {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+// Custom elements .....................................
+// HTML: select => option
+%custom-select {
+    // Reset
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    // Style
+    display: inline-block;
+    border: 0.15rem solid #e8e2d6;
+    border-radius: $radius + 2.5 * $radius;
+    padding: to-rem(8px) to-rem(20px);
+    font-size: to-rem(16px);
+    background-color: #fff;
+    color: #45413e;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    // Style arrow
+    background: url("../img/icons/select-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: 85% 50%;
+    background-size: 0.6rem;
+
+    &:hover {
+        border-color: #84bc22;
+    }
+}
+
+// HTML: div => button.minus + input:number + button.plus
+%custom-number-input {
+    display: inline-block;
+    margin-right: to-rem(24px);
+    position: relative;
+
+    > input[type="number"] {
+        // Reset
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+
+        // Styling field
+        width: 100%;
+        border: 0.15rem solid #e8e2d6;
+        border-radius: $radius + 2.5 * $radius;
+        padding: to-rem(8px) to-rem(20px);
+        font-size: to-rem(16px);
+        background-color: #fff;
+        color: #45413e;
+        text-align: center;
+
+        // Reset buttons
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+
+    > button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        color: #999999;
+        font-size: to-rem(18px);
+        width: to-rem(20px);
+        height: to-rem(20px);
+        border-radius: 50%;
+        transition: all 0.5s ease;
+
+        &:hover {
+            background-color: lighten(#e8e2d6, 5%);
+        }
+
+        &.minus {
+            left: 15%;
+        }
+
+        &.plus {
+            right: 15%;
+        }
+    }
+}
+
+// HTML: box => input[type="radio"] + label
+%custom-radio-input {
+    > input[type="radio"] {
+        opacity: 0;
+        visibility: hidden;
+
+        &:checked + label:after {
+            opacity: 1;
+        }
+    }
+
+    > label {
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            &:before {
+                box-shadow: 0 0 to-rem(5px) #ddd;
+            }
+        }
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -2rem;
+            background-color: transparent;
+            padding: to-rem(6px);
+            border: 0.15rem solid #e8e2d6;
+            border-radius: 50%;
+            content: "";
+            transition: all 0.2s ease;
+        }
+
+        &:after {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -1.72rem;
+            background-color: #84bc22;
+            padding: to-rem(4px);
+            border: none;
+            border-radius: 50%;
+            content: "";
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+    }
+}
+
+// Reusable class styles ------------------------------------------
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    overflow: hidden;
+    background-color: #000;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+
+    &.active {
+        opacity: 1;
+        background-color: rgba(#000, 0.74);
+        visibility: visible;
+    }
+}
+
+#signinForm {
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    background-color: white;
+    padding: to-rem(50px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    cursor: initial;
+    text-align: center;
+    border-radius: $radius;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    * {
+        user-select: none;
+    }
+
+    h3 {
+        color: #45413e;
+        font-size: to-rem(30px);
+        margin-bottom: 3rem;
+    }
+
+    label {
+        color: #45413e;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        float: left;
+        display: inline-block;
+    }
+
+    a {
+        display: inline-block;
+        color: #84bc22;
+        font-size: to-rem(12px);
+
+        &:hover {
+            color: lighten(#84bc22, 10%);
+        }
+    }
+
+    .forgot {
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        > a {
+            float: right;
+        }
+    }
+
+    input[type="email"], input[type="password"], input[type="text"] {
+        width: 100%;
+        border: 0.15rem solid #d7d7d7;
+        background-color: white;
+        padding: to-rem(12px) to-rem(20px);
+        border-radius: 3.5 * $radius;
+        transition: all 0.5s ease;
+
+        &:focus {
+            &:invalid, &:empty {
+                border-color: red;
+            }
+
+            &:valid {
+                border-color: #84bc22;
+            }
+        }
+    }
+
+    input[type="email"] {
+        margin-bottom: to-rem(30px);
+    }
+
+    .password {
+        position: relative;
+
+        span.showPassword {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1rem;
+
+            svg {
+                color: #4f4e4c;
+                width: to-rem(18px);
+                height: to-rem(18px);
+            }
+        }
+    }
+
+    input[type="submit"]#login {
+        display: block;
+        margin: to-rem(60px) auto to-rem(22px);
+
+        @extend %btn;
+
+        padding: to-rem(8px) to-rem(70px);
+        border-color: transparent;
+        color: white;
+        background-color: #84bc22;
+
+        &:hover {
+            color: #84bc22;
+            border-color: #84bc22;
+            background-color: transparent;
+        }
+    }
 }

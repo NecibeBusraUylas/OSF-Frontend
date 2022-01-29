@@ -10,17 +10,30 @@
 }
 
 html {
-  font-size: 1.09375vw;
+  font-size: 14px;
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 1.09375vw;
+  }
 }
 
 body {
   position: relative;
 }
 
+body.noscroll {
+  overflow: hidden;
+}
+
+main {
+  padding-top: to-rem(83px);
+}
+
 .wrapper {
-  width: 100%;
-  padding-left: 4.3%;
-  padding-right: 4.3%;
+  width: 91.4%;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -28,7 +41,7 @@ section {
   overflow: hidden;
 }
 
-a, button {
+a, button, input[type="submit"] {
   display: inline-block;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -44,17 +57,170 @@ a, button {
   background-color: transparent;
 }
 
-main section.slider .wrapper .slider-dots div.img a, main section.pop-items .wrapper button.btn {
-  display: inline-block;
+#signinForm input#login[type="submit"], main section.slider .wrapper .slider-dots .img a, main section.slider .wrapper .advert .follow a, main section.pop-items .wrapper button.btn {
   text-transform: uppercase;
-  border: 3px solid rgba(255, 255, 255, 0.5);
-  background-color: transparent;
+  font-size: to-rem(16px);
+  padding: to-rem(8px) to-rem(20px);
+  border-width: 0.15rem;
+  border-style: solid;
   border-radius: 35px;
   cursor: pointer;
 }
 
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  overflow: hidden;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+#overlay.active {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.74);
+  visibility: visible;
+}
+
+#signinForm {
+  position: absolute;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 200;
+  background-color: white;
+  padding: 3.57143rem;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  cursor: initial;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#signinForm.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#signinForm:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#signinForm * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#signinForm h3 {
+  color: #45413e;
+  font-size: 2.14286rem;
+  margin-bottom: 3rem;
+}
+
+#signinForm label {
+  color: #45413e;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  float: left;
+  display: inline-block;
+}
+
+#signinForm a {
+  display: inline-block;
+  color: #84bc22;
+  font-size: 0.85714rem;
+}
+
+#signinForm a:hover {
+  color: #9fdb36;
+}
+
+#signinForm .forgot:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#signinForm .forgot > a {
+  float: right;
+}
+
+#signinForm input[type="email"], #signinForm input[type="password"], #signinForm input[type="text"] {
+  width: 100%;
+  border: 0.15rem solid #d7d7d7;
+  background-color: white;
+  padding: 0.85714rem 1.42857rem;
+  border-radius: 35px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#signinForm input[type="email"]:focus:invalid, #signinForm input[type="email"]:focus:empty, #signinForm input[type="password"]:focus:invalid, #signinForm input[type="password"]:focus:empty, #signinForm input[type="text"]:focus:invalid, #signinForm input[type="text"]:focus:empty {
+  border-color: red;
+}
+
+#signinForm input[type="email"]:focus:valid, #signinForm input[type="password"]:focus:valid, #signinForm input[type="text"]:focus:valid {
+  border-color: #84bc22;
+}
+
+#signinForm input[type="email"] {
+  margin-bottom: 2.14286rem;
+}
+
+#signinForm .password {
+  position: relative;
+}
+
+#signinForm .password span.showPassword {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 1rem;
+}
+
+#signinForm .password span.showPassword svg {
+  color: #4f4e4c;
+  width: 1.28571rem;
+  height: 1.28571rem;
+}
+
+#signinForm input[type="submit"]#login {
+  display: block;
+  margin: 4.28571rem auto 1.57143rem;
+  padding: 0.57143rem 5rem;
+  border-color: transparent;
+  color: white;
+  background-color: #84bc22;
+}
+
+#signinForm input[type="submit"]#login:hover {
+  color: #84bc22;
+  border-color: #84bc22;
+  background-color: transparent;
+}
+
 /* Header ------------------------------------------------ */
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
 }
@@ -75,6 +241,7 @@ header > .wrapper a.logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 12%;
   -ms-flex-item-align: center;
       align-self: center;
 }
@@ -133,7 +300,10 @@ header > .wrapper nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 85%;
   justify-self: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   padding-top: 1rem;
 }
 
@@ -275,19 +445,40 @@ header > .wrapper nav ul.nav-lang > li:hover * {
   color: #fff;
 }
 
-header > .wrapper nav ul.nav-manage > li a svg {
+header > .wrapper nav ul.nav-manage > li button, header > .wrapper nav ul.nav-manage > li a {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+header > .wrapper nav ul.nav-manage > li button svg, header > .wrapper nav ul.nav-manage > li a svg {
   color: #45413e;
   opacity: 0.5;
   font-size: 1.7rem;
 }
 
-header > .wrapper nav ul.nav-manage > li a svg path {
+header > .wrapper nav ul.nav-manage > li button svg path, header > .wrapper nav ul.nav-manage > li a svg path {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
-header > .wrapper nav ul.nav-manage > li a svg:hover path {
+header > .wrapper nav ul.nav-manage > li button svg:hover path, header > .wrapper nav ul.nav-manage > li a svg:hover path {
   color: #84bc22;
+}
+
+header > .wrapper nav ul.nav-manage > li button#wishlist > span, header > .wrapper nav ul.nav-manage > li button#cart > span, header > .wrapper nav ul.nav-manage > li a#wishlist > span, header > .wrapper nav ul.nav-manage > li a#cart > span {
+  position: absolute;
+  display: inline-block;
+  top: -30%;
+  right: -40%;
+  font-size: 0.6rem;
+  color: #84bc22;
+  background-color: white;
+  border: 0.15rem solid #84bc22;
+  padding: 0.14286rem 0.35714rem;
+  border-radius: 50%;
+  z-index: 15;
 }
 
 main {
@@ -314,7 +505,7 @@ main section.slider .wrapper .slider-dots {
   position: relative;
 }
 
-main section.slider .wrapper .slider-dots div.img {
+main section.slider .wrapper .slider-dots .img {
   padding: 5rem 4.28571rem 7.42857rem;
   border-radius: 10px;
   display: -webkit-box;
@@ -333,49 +524,57 @@ main section.slider .wrapper .slider-dots div.img {
   transition: all 0.8s ease;
 }
 
-main section.slider .wrapper .slider-dots div.img:nth-child(n) {
+main section.slider .wrapper .slider-dots .img * {
+  color: white;
+}
+
+main section.slider .wrapper .slider-dots .img:nth-child(n) {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   text-align: left;
 }
 
-main section.slider .wrapper .slider-dots div.img:nth-child(2n) {
+main section.slider .wrapper .slider-dots .img:nth-child(2n) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
 }
 
-main section.slider .wrapper .slider-dots div.img:nth-child(3n) {
+main section.slider .wrapper .slider-dots .img:nth-child(3n) {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
   text-align: right;
 }
 
-main section.slider .wrapper .slider-dots div.img.active {
+main section.slider .wrapper .slider-dots .img.active {
   opacity: 1;
   visibility: visible;
 }
 
-main section.slider .wrapper .slider-dots div.img h3 {
+main section.slider .wrapper .slider-dots .img h3 {
   width: 50%;
   font-size: 2.14286rem;
   margin-bottom: 110px;
 }
 
-main section.slider .wrapper .slider-dots div.img p {
+main section.slider .wrapper .slider-dots .img p {
   width: 40%;
   margin-bottom: 2.14286rem;
 }
 
-main section.slider .wrapper .slider-dots div.img a {
-  color: white;
+main section.slider .wrapper .slider-dots .img a {
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
+  font-size: 1rem;
   padding: 0.57143rem 2.5rem;
+  opacity: 0.7;
 }
 
-main section.slider .wrapper .slider-dots div.img a:hover {
+main section.slider .wrapper .slider-dots .img a:hover {
   opacity: 1;
 }
 
@@ -456,19 +655,24 @@ main section.slider .wrapper .advert .follow p {
   color: gray;
 }
 
-main section.slider .wrapper .advert .follow svg {
+main section.slider .wrapper .advert .follow a {
+  border-color: #3a5b96;
+  background-color: white;
+}
+
+main section.slider .wrapper .advert .follow a svg {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   margin-right: 10px;
   color: #3a5b96;
 }
 
-main section.slider .wrapper .advert .follow:hover {
+main section.slider .wrapper .advert .follow a:hover {
   background: #3a5b96;
   color: #fff;
 }
 
-main section.slider .wrapper .advert .follow:hover svg {
+main section.slider .wrapper .advert .follow a:hover svg {
   color: #fff;
 }
 
@@ -578,8 +782,10 @@ main section.pop-items .wrapper .items .item h4.name {
 }
 
 main section.pop-items .wrapper .items .item span {
+  display: inline-block;
   font-size: 1.28571rem;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 main section.pop-items .wrapper .items .item .paired {
@@ -596,17 +802,22 @@ main section.pop-items .wrapper .items .item .paired {
 
 main section.pop-items .wrapper .items .item .paired * {
   padding: 0.71429rem 1.21429rem;
-  border: 1px groove #585555;
+  border: 3px groove black;
 }
 
 main section.pop-items .wrapper .items .item .paired span {
+  padding: 0.71429rem 1.21429rem;
+  border: 1px groove #585555;
   border-radius: 30px 0 0 30px;
-  color: #24c36c;
   border-right: none;
 }
 
+main section.pop-items .wrapper .items .item .paired span a {
+  color: #24c36c;
+}
+
 main section.pop-items .wrapper .items .item .paired button {
-  border-radius: 0 30px 30px 0;
+  border-radius: 0 10px 10px 0;
   color: #000;
   font-size: 1rem;
   background-color: transparent;
@@ -665,6 +876,8 @@ main section.pop-items .wrapper button.btn {
   margin-top: 3.64286rem;
   padding: 0.71429rem 6.42857rem;
   color: #fff;
+  background-color: transparent;
+  border-color: white;
   font-size: 0.8rem;
 }
 
@@ -850,7 +1063,7 @@ main section.benefits .wrapper div.card img {
 main section.benefits .wrapper div.card h4 {
   margin-bottom: 1.64286rem;
   text-transform: uppercase;
-  color: white;
+  color: #fff;
   text-align: left;
 }
 
@@ -957,4 +1170,4 @@ footer .wrapper .social ul li a svg path {
 footer .wrapper .social ul li a svg:hover path {
   color: #84bc22;
 }
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=index.css.map */

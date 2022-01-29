@@ -7,258 +7,15 @@
 // Import variables
 @import "base/_variables.scss";
 
-/* Overlay ------------------------------------------------ */
-#overlay {
-    @extend %overlay;
-}
-
-header {
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-
-    > .wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-
-        a.logo {
-            display: flex;
-            align-self: center;
-
-            img {
-                width: to-rem(64px);
-                height: to-rem(64px);
-                margin-right: 5px;
-            }
-
-            div {
-                h1 {
-                    font-size: to-rem(32px);
-                    letter-spacing: 6px;
-                    color: #011847;
-                }
-
-                h2 {
-                    font-size: to-rem(18px);
-                    color: #84bc22;
-                }
-            }
-        }
-
-        nav > ul {
-            display: flex;
-            align-items: flex-end;
-
-            > li {
-                display: inline-block;
-                padding: to-rem(15px) to-rem(20px) to-rem(30px) to-rem(20px);
-                transition: all 0.3s ease;
-                user-select: none;
-
-                &:hover {
-                    color: #fff;
-                }
-
-                > span.arrow-down {
-                    font-size: 0.7em;
-                    margin-left: to-rem(8px);
-                    color: #45413e;
-                    opacity: 0.7;
-                }
-            }
-        }
-
-        nav {
-            display: flex;
-            justify-self: flex-end;
-            padding-top: 1rem;
-
-            ul.nav-main > li {
-                text-transform: uppercase;
-                border-bottom: 5px solid transparent;
-
-                &:hover {
-                    * {
-                        color: #fff;
-                    }
-
-                    background-color: #262a32;
-                    border-bottom: 5px solid #84bc22;
-                }
-
-                &.menu-open {
-                    z-index: 20;
-
-                    &:hover {
-                        .menu {
-                            opacity: 1;
-                            visibility: visible;
-                        }
-                    }
-
-                    .menu {
-                        background-color: #262a32;
-
-                        // Hover effects
-                        position: absolute;
-                        opacity: 0;
-                        visibility: hidden;
-                        left: 0;
-                        right: 0;
-                        top: to-rem(86px);
-                        z-index: 10;
-                        transition: all 0.4s ease;
-
-                        > .wrapper {
-                            display: flex;
-                            flex-direction: row;
-                            flex-wrap: nowrap;
-                            justify-content: space-between;
-                            padding-top: to-rem(30px);
-                            padding-bottom: to-rem(30px);
-                        }
-
-                        * {
-                            font-size: 1rem;
-                            color: #fff;
-                            text-align: left;
-                        }
-
-                        h3 {
-                            padding-bottom: to-rem(10px);
-                        }
-
-                        li {
-                            padding: to-rem(6px) 0;
-                            text-transform: capitalize;
-                            transition: all 0.2s ease;
-
-                            &:hover {
-                                opacity: 0.6;
-                            }
-                        }
-
-                        .prod-cat {
-                            width: 40%;
-                            display: flex;
-                            flex-direction: column;
-
-                            > div {
-                                display: flex;
-                                flex-direction: row;
-                                flex-wrap: nowrap;
-                                justify-content: space-between;
-                            }
-                        }
-
-                        .sale {
-                            width: 10%;
-                            display: flex;
-                            flex-direction: column;
-                        }
-
-                        img {
-                            width: 30%;
-                            height: 100%;
-                            border-radius: $radius;
-                        }
-                    }
-                }
-            }
-
-            ul.nav-lang {
-                margin-right: to-rem(50px);
-
-                * {
-                    color: #45413e;
-                }
-
-                > li {
-                    border-bottom: 5px solid transparent;
-
-                    &:hover {
-                        * {
-                            color: #fff;
-                        }
-
-                        background-color: #262a32;
-                        border-bottom: 5px solid #84bc22;
-                    }
-                }
-            }
-
-            ul.nav-manage > li a svg {
-                color: #45413e;
-                opacity: 0.5;
-                font-size: 1.7rem;
-
-                path {
-                    transition: all 0.3s ease;
-                }
-
-                &:hover {
-                    path {
-                        color: #84bc22;
-                    }
-                }
-            }
-        }
-    }
-}
+/* Header ------------------------------------------------ */
+@import "./layout/header";
 
 main {
     /* Breadcrumbs ----------------------------------------- */
-    section.breadcrumbs {
-        background-color: #F1EDEA;
+    $length: 20%;
+    $length-color: #e5e2df;
 
-        .wrapper {
-            padding-top: to-rem(50px);
-            padding-bottom: to-rem(30px);
-
-            > ul {
-                li {
-                    display: inline-block;
-                    margin: 0 0.4rem;
-
-                    a {
-                        color: #84bc22;
-
-                        &:hover {
-                            color: lighten(#84bc22, 15%);
-                        }
-                    }
-                }
-            }
-
-            h2 {
-                padding: to-rem(15px) 0 to-rem(20px);
-                text-align: center;
-                position: relative;
-                font-size: to-rem(45px);
-                color: rgb(51, 45, 45);
-
-                &:before {
-                    position: absolute;
-                    bottom: 50%;
-                    right: 0;
-                    content: "";
-                    width: 20%;
-                    background-color: transparent;
-                    border-bottom: 0.15rem solid #e5e2df;
-                }
-
-                &:after {
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    content: "";
-                    width: 20%;
-                    background-color: transparent;
-                    border-bottom: 0.15rem solid #e5e2df;
-                }
-            }
-        }
-    }
+    @import "./layout/breadcrumbs";
 
     /* Product ----------------------------------------- */
     section.product {
@@ -360,10 +117,46 @@ main {
                         align-items: flex-start;
 
                         span.price {
-                            color: rgb(51, 45, 45);
-                            font-weight: bold;
                             font-size: to-rem(48px);
                             margin-bottom: to-rem(40px);
+                        }
+
+                        // Custom select input
+                        div.colorpick {
+                            display: inline-block;
+                            width: 100%;
+                            margin-bottom: to-rem(24px);
+                            position: relative;
+                            text-align: left;
+
+                            > select {
+                                @extend %custom-select;
+
+                                padding: to-rem(8px) to-rem(20px) to-rem(8px) to-rem(45px);
+                                width: 42%;
+                            }
+
+                            > ul {
+                                display: inline-block;
+                                position: absolute;
+                                top: 20%;
+                                left: to-rem(11px);
+
+                                > li {
+                                    display: inline-block;
+                                    position: absolute;
+                                    background-color: #ddd;
+                                    padding: to-rem(12px);
+                                    border-radius: 50%;
+                                    opacity: 0;
+                                    visibility: hidden;
+
+                                    &.active {
+                                        opacity: 1;
+                                        visibility: visible;
+                                    }
+                                }
+                            }
                         }
 
                         .add {
@@ -371,17 +164,31 @@ main {
                             margin-bottom: to-rem(48px);
                             text-align: left;
 
-                            button {
-                                border: 2px solid rgba(#45413e, 0.5);
-                                border-radius: $radius + 25px;
-                                padding: to-rem(8px) to-rem(20px);
+                            // Custom number input
+                            > .amountpick button{
+                                @extend %custom-number-input;
+                                width: 30%;
+                                display: block;
+                                background-color: transparent;
+                                border: none;
+                                color: #84bc22;
                                 font-size: to-rem(16px);
-                                width: 42%;
-                                background-color: #84bc22;
-                                color: #fff;
-                                text-transform: uppercase;
+                                text-align: center;
                                 cursor: pointer;
-                                transition: all 0.3s ease;
+                                margin: to-rem(24px) 0;
+                                transition: all 0.5s ease;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+
+                            > button {
+                                @extend %btn;
+
+                                width: 42%;
+                                border-color: #e8e2d6;
+                                color: #fff;
 
                                 &:hover {
                                     background-color: transparent;
@@ -398,23 +205,24 @@ main {
                             overflow: hidden;
                         }
 
-                        button.more {
-                            display: block;
-                            background-color: transparent;
-                            border: none;
-                            color: #84bc22;
-                            font-size: to-rem(16px);
-                            text-align: center;
-                            cursor: pointer;
-                            margin: to-rem(24px) 0 to-rem(30px);
-                            transition: all 0.5s ease;
-
-                            &:hover {
-                                text-decoration: underline;
-                            }
-                        }
-
                         .share {
+                            width: 100%;
+                            text-align: left;
+
+                            button {
+                                @extend %btn;
+
+                                width: 42%;
+                                border-color: #e8e2d6;
+                                color: #fff;
+                                margin-bottom: to-rem(24px);
+
+                                &:hover {
+                                    background-color: transparent;
+                                    color: #84bc22;
+                                }
+                            }
+
                             ul li {
                                 display: inline-block;
                                 margin: 0 to-rem(12px);
@@ -560,220 +368,34 @@ main {
                 }
             }
 
-            .items {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-
-                .item {
-                    width: 25% - 2 * 1%;
-                    padding-bottom: 1.5rem;
-                    background-color: #fff;
-                    border-radius: $radius + 2px;
-                    text-align: center;
-
-                    // Flex
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-
-                    // Card overlay styles
-                    position: relative;
-
-                    &:hover {
-                        .overlay {
-                            opacity: 0.9;
-                            visibility: visible;
-                        }
-                    }
-
-                    .img {
-                        height: to-rem(260px);
-                        border-radius: $radius $radius 0 0;
-                    }
-
-                    h4.name {
-                        font-size: to-rem(16px);
-                        width: 90%;
-                        margin: 1rem auto;
-                        font-weight: normal;
-                    }
-
-                    span {
-                        font-size: to-rem(16px);
-                        font-weight: bold;
-                        color: #bdc3c7;
-                    }
-
-                    // Card overlay styles
-                    .overlay {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
-                        background: linear-gradient(to top, #1cc167, #2ed3a2);
-                        border-radius: inherit;
-                        opacity: 0;
-                        visibility: hidden;
-                        transition: all 0.4s ease;
-
-                        button {
-                            display: inline-block;
-                            background-color: #fff;
-                            padding: to-rem(31px);
-                            border-radius: 100%;
-                            border: 1px solid #fff;
-                            cursor: pointer;
-                            margin-top: 50%;
-
-                            &:hover {
-                                background-color: darken(#fff, 5%);
-                                box-shadow: 0 0 20px darken(#1cc167, 20%);
-                            }
-
-                            &:nth-child(1) {
-                                margin-right: to-rem(22px);
-                            }
-
-                            img {
-                                background-color: transparent;
-                                width: 2rem;
-                                height: 2rem;
-                            }
-                        }
-                    }
-                }
-            }
+            //items
+            @import "./layout/items";
         }
     }
 
     /* Benefits ---------------------------------------------- */
-    section.benefits {
-        background-color: #45413e;
+    @import "./layout/benefits";
 
-        .wrapper {
-            padding-top: to-rem(45px);
-            padding-bottom: to-rem(45px);
-            display: flex;
-            justify-content: space-between;
+    section.benefits .wrapper div.card {
+        width: 30%;
 
-            div.card {
-                width: 30%;
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
+        img {
+            width: 9rem;
+        }
 
-                img {
-                    width: to-rem(150px);
-                    margin-right: to-rem(35px);
-                }
+        h4 {
+            background: none;
+            -webkit-text-fill-color: #fff;
+            color: #fff;
+        }
 
-                h4 {
-                    margin-bottom: to-rem(23px);
-                    text-transform: uppercase;
-                    color: white;
-                    text-align: left;
-                }
-
-                p {
-                    color: gray;
-                    text-align: left;
-                }
-            }
+        p {
+            background: none;
+            -webkit-text-fill-color: lighten(#45413e, 25%);
+            color: lighten(#45413e, 25%);
         }
     }
 }
 
 /* Footer ------------------------------------------------ */
-footer {
-    .wrapper {
-        padding-top: to-rem(32px);
-        padding-bottom: to-rem(38px);
-        display: flex;
-        justify-content: space-between;
-
-        * {
-            text-align: left;
-            font-size: to-rem(13px);
-            color: #45413e;
-        }
-
-        h3 {
-            text-transform: uppercase;
-            color: #000;
-            font-weight: bold;
-            margin-bottom: to-rem(28px);
-        }
-
-        li {
-            margin: to-rem(10px) 0;
-        }
-
-        .contact {
-            width: 17%;
-
-            h3 {
-                margin-top: to-rem(28px);
-                margin-bottom: 0;
-            }
-
-            ul li {
-                margin-bottom: to-rem(20px);
-            }
-        }
-
-        .categories {
-            width: 40%;
-
-            > div {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                ul li a {
-                    opacity: 0.7;
-
-                    &:hover {
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-
-        .about {
-            width: 10%;
-
-            ul li a {
-                opacity: 0.7;
-
-                &:hover {
-                    opacity: 1;
-                }
-            }
-        }
-
-        .social {
-            ul li {
-                display: inline-block;
-                margin: 0 to-rem(12px);
-
-                a svg {
-                    color: #45413e;
-                    opacity: 0.5;
-                    font-size: 1.2rem;
-
-                    path {
-                        transition: all 0.3s ease;
-                    }
-
-                    &:hover {
-                        path {
-                            color: #84bc22;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+@import "./layout/footer";

@@ -1,0 +1,127 @@
+// Reset styles
+@import "base/_reset.scss";
+
+// Import mixins
+@import "base/_mixins.scss";
+
+// Import variables
+@import "base/_variables.scss";
+
+/* Header ------------------------------------------------ */
+@import "./layout/header";
+
+main {
+    /* Info ----------------------------------------- */
+    section.countdown {
+        background-color: #F5F5F5;
+        padding: to-rem(80px) 0;
+
+        .wrapper {
+            background-color: #fff;
+            padding: to-rem(50px) 0 to-rem(60px);
+            border-radius: $radius;
+            text-align: center;
+
+            h3 {
+                width: 40%;
+                margin: 0 auto;
+                margin-bottom: 0.5rem;
+                font-size: to-rem(30px);
+            }
+
+            p {
+                width: 38%;
+                margin: 0 auto;
+                margin-bottom: 1.5rem;
+                font-size: 1rem;
+                line-height: 1.5;
+                color: #555555;
+            }
+
+            .release {
+                width: 55%;
+                margin: to-rem(75px) auto to-rem(100px);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                > div {
+                    width: 18.4%;
+                    text-align: center;
+
+                    > div {
+                        @include center-round;
+
+                        width: 100%;
+                        height: to-rem(120px);
+                    }
+
+                    span {
+                        font-size: to-rem(48px);
+                        color: #45413e;
+                        background-color: white;
+                        border: 0.2rem solid #84bc22;
+                        padding: to-rem(28px);
+                        user-select: none;
+                    }
+
+                    h5 {
+                        width: 100%;
+                        display: block;
+                        text-align: center;
+                        font-size: to-rem(18px);
+                        line-height: 1.67;
+                        color: #45413e;
+                        margin-top: 1rem;
+                    }
+                }
+            }
+
+            form.mailing {
+                width: 42%;
+                margin: 0 auto;
+                position: relative;
+
+                > input[type="email"] {
+                    border-radius: $radius + 25px;
+                    border: 0.15rem solid #e5e2df;
+                    padding: to-rem(10px) to-rem(20px);
+                    width: 100%;
+                    color: #45413e;
+                    font-size: 1rem;
+                    transition: all 0.5s ease;
+
+                    &:focus {
+                        border-color: #84bc22;
+
+                        &:invalid, &:empty {
+                            border-color: red;
+                        }
+                    }
+                }
+
+                > input[type="submit"] {
+                    position: absolute;
+                    opacity: 0;
+                    visibility: hidden;
+                }
+
+                label {
+                    cursor: pointer;
+                    svg{
+                        position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						right: 1rem;
+						color: #84bc22;
+						width: to-rem(23px);
+						height: to-rem(23px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Footer ------------------------------------------------ */
+@import "./layout/footer";
