@@ -129,7 +129,7 @@ main {
                 .img {
                     height: to-rem(305px);
                     margin-bottom: to-rem(25px);
-                    padding: to-rem(30px);
+                    padding: to-rem(50px);
                     border-radius: $radius;
                     text-align: center;
 
@@ -167,6 +167,7 @@ main {
 
                     a {
                         @extend %btn;
+
                         border-color: #3a5b96;
                         background-color: white;
 
@@ -233,19 +234,24 @@ main {
             //items
             @import "./layout/items";
 
-            button.btn {
+            button#loadMore {
                 @extend %btn;
                 margin-top: to-rem(51px);
                 padding: to-rem(10px) to-rem(90px);
-                color: #fff;
-                background-color: transparent;
-                border-color: white;
+                background-color: white;
+                border-color: inherit;
+                color: inherit;
                 font-size: 0.8rem;
+                &.enabled {
+                    background-color: #84bc22;
+                    color: white;
+                    border-color: transparent;
 
-                &:hover {
-                    background-color: #fff;
-                    border-color: inherit;
-                    color: inherit;
+                    &:hover {
+                        color: #84bc22;
+                        background-color: white;
+                        border-color: #84bc22;
+                    }
                 }
             }
         }

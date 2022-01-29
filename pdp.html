@@ -1,415 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Product Detailed Page</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Product Detailed Page</title>
 
-	<!-- Link Fontawesome icons -->
-	<script src="https://kit.fontawesome.com/793c03e560.js"></script>
+    <!-- Link Fontawesome icons -->
+    <script src="https://kit.fontawesome.com/793c03e560.js"></script>
 
-	<!-- Link user styles -->
-	<link rel="stylesheet" href="./scss/pdp.css">
-</head>
-<body>
+    <!-- Link user styles -->
+    <link rel="stylesheet" href="./scss/pdp.css" />
+  </head>
+  <body>
     <!-- Overlay -->
-	<div id="overlay"></div>
+    <div id="overlay"></div>
 
-	<!-- Header -->
-	<header>
-		<div class="wrapper">
-			<a href="./index.html" class="logo">
-				<img src="img/home/logo.svg" alt="logo">
-				<div>
-					<h1>OSF</h1>
-					<h2>Academy</h2>
-				</div>
-			</a>
+    <!-- Cookies Modal -->
+    <div id="cookies">
+      <div class="subwrapper">
+        <h6>This website uses cookies</h6>
+        <p>
+          OSF uses its own and third-party cookies for statistical purposes, to
+          know your preferences, for website performance and interaction with
+          social media offering publicity tailored to your interests. If you
+          continue browsing, we consider that you accept its use.<br />
+          You can expand this information consulting our
+          <a href="#">Cookies Policy Page</a>.
+          <button id="accept-cookies" class="btn">Accept</button>
+          <span id="close-cookies"><i class="fas fa-times"></i></span>
+        </p>
+      </div>
+    </div>
 
-			<nav>
-				<ul class="nav-main">
-					<li class="menu-open">Services
-						<span class="arrow-down">&#9660;</span>
-						<!-- Menu -->
-						<div class="menu">
-							<div class="wrapper">
-								<div class="prod-cat">
-									<h3>Product categories</h3>
-									<div>
-										<ul>
-											<li><a href="./404.html">Accessories</a></li>
-											<li><a href="./404.html">Alcohol</a></li>
-											<li><a href="./404.html">Art</a></li>
-											<li><a href="./404.html">Books</a></li>
-											<li><a href="./404.html">Drink</a></li>
-											<li><a href="./404.html">Electronics</a></li>
-											<li><a href="./404.html">Flowers & Plants</a></li>
-											<li><a href="./404.html">Food</a></li>
-										</ul>
-										<ul>
-											<li><a href="./404.html">Gadgets</a></li>
-											<li><a href="./404.html">Garden</a></li>
-											<li><a href="./404.html">Grocery</a></li>
-											<li><a href="./404.html">Home</a></li>
-											<li><a href="./404.html">Jewerly</a></li>
-											<li><a href="./404.html">Kids & Baby</a></li>
-											<li><a href="./404.html">Men's Fashion</a></li>
-											<li><a href="./404.html">Mobile</a></li>
-										</ul>
-										<ul>
-											<li><a href="./404.html">Motorcycles</a></li>
-											<li><a href="./404.html">Movies</a></li>
-											<li><a href="./404.html">Music</a></li>
-											<li><a href="./404.html">Office</a></li>
-											<li><a href="./404.html">Pets</a></li>
-											<li><a href="./404.html">Romantic</a></li>
-											<li><a href="./404.html">Sport</a></li>
-											<li><a href="./404.html">Toys</a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="sale">
-									<h3>Sale</h3>
-									<ul>
-										<li><a href="./404.html">Accessories</a></li>
-										<li><a href="./404.html">Alcohol</a></li>
-										<li><a href="./404.html">Art</a></li>
-										<li><a href="./404.html">Books</a></li>
-										<li><a href="./404.html">Drink</a></li>
-										<li><a href="./404.html">Electronics</a></li>
-										<li><a href="./404.html">Flowers & Plants</a></li>
-										<li><a href="./404.html">Food</a></li>
-									</ul>
-								</div>
-								<img src="img/home/navbanner.png" alt="navbanner">
-							</div>
-						</div>
-					</li>
-					<li>Company</li>
-					<li>Library</li>
-					<li>Contact Us</li>
-				</ul>
+    <!-- Sign In modal -->
+    <form id="signinForm">
+      <h3>Sign in</h3>
 
-				<ul class="nav-lang">
-					<li>EN<span class="arrow-down">&#9660;</span></li>
-					<li>$ US<span class="arrow-down">&#9660;</span></li>
-				</ul>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        required
+      />
 
-				<ul class="nav-manage">
-					<li><a href="#">
-						<img src="img/icons/search.svg" alt="search">
-					</a></li>
-					<li><a href="#" id="openSignin">
-						<img src="img/icons/user.svg" alt="user">
-					</a></li>
-					<li><a href="#" id="wishlist">
-						<img src="img/icons/heart.svg" alt="heart">
-					</a></li>
-					<li><a href="./cart.html" id="cart">
-						<img src="img/icons/bag.svg" alt="bag">
-					</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
+      <div class="forgot">
+        <label for="password">Password</label>
+        <a href="#">forgot password</a>
+      </div>
+      <div class="password">
+        <span class="showPassword">
+          <i class="far fa-eye"></i>
+        </span>
+        <!-- At least 6 characters length, contain 1 numeric, 1 uppercase letter, 1 special character -->
+        <input
+          type="password"
+          name="password"
+          pattern="(?=.*\d)(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~])(?=.*[A-Z]).{6,}"
+          required
+        />
+      </div>
 
-	<!-- Main -->
-	<main>
+      <input type="submit" value="Login" id="login" />
+      <a href="#" class="register">I don't have an account</a>
+    </form>
 
-		<!-- Breadcrumbs -->
-		<section class="breadcrumbs">
-			<div class="wrapper">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li>/</li>
-					<li><a href="#">OSF Theme</a></li>
-					<li>/</li>
-					<li>Archi Desk Accessoris Pen Cup</li>
-				</ul>
-				<h2>Archi Desk Accessoris Pen Cup</h2>
-			</div>
-		</section>
+    <!-- Header -->
+    <header>
+      <div class="wrapper">
+        <a href="./index.html" class="logo">
+          <img src="img/home/logo.svg" alt="logo" />
+          <div>
+            <h1>OSF</h1>
+            <h2>Academy</h2>
+          </div>
+        </a>
 
-		<!-- Product -->
-		<section class="product">
-			<div class="wrapper">
-				<div class="sub-wrapper">
-					<!-- View product -->
-					<div class="overview">
-                        <i class="fas fa-expand-arrows-alt"></i>
-						<div class="large">
-							<img class="active" src="img/pdp/product/black-front.jpg" alt="black-front">
-							<img src="img/pdp/product/black-back.jpg" alt="black-back">
-							<img src="img/pdp/product/aqua-front.jpg" alt="aqua-front">
-							<img src="img/pdp/product/aqua-back.jpg" alt="aqua-back">
-						</div>
-						<div class="small">
-							<img class="active" src="img/pdp/product/black-front.jpg" alt="black-front" class="active">
-							<img src="img/pdp/product/black-back.jpg" alt="black-back">
-							<img src="img/pdp/product/aqua-front.jpg" alt="aqua-front">
-							<img src="img/pdp/product/aqua-back.jpg" alt="aqua-back">
-						</div>
-						<div class="about">
-							<span class="price">$299.99</span>
-							<!-- * Custom select input -->
-							<div class="colorpick">
-								<ul>
-									<li class="active" style="background-color: #585d61"></li>
-									<li style="background-color: aqua"></li>
-								</ul>
-								<select name="colorpick">
-									<option value="Dark Gray">Dark Gray</option>
-									<option value="Aqua">Aqua</option>
-								</select>
-							</div>
-							<div class="add">
-								<!-- * Custom number input -->
-								<div class="amountpick">
-									<button class="minus">-</button>
-									<input type="number" name="amountpick">
-									<button class="plus">+</button>
-								</div>
-								<button>Add to cart</button>
-							</div>
-							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore Beatae vitae dicta sunt explicabo.
-							Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-							<div class="share">
-								<ul>
-									<li>
-										<span>Share</span>
-									</li>
-									<li><a href="#">
-										<i class="fab fa-facebook-f"></i>
-									</a></li>
-									<li><a href="#">
-										<i class="fab fa-google-plus-g"></i>
-									</a></li>
-									<li><a href="#">
-										<i class="fab fa-twitter"></i>
-									</a></li>
-									<li><a href="#">
-										<i class="fab fa-pinterest-p"></i>
-									</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+        <nav>
+          <ul class="nav-main">
+            <li class="menu-open">
+              Services
+              <span class="arrow-down">&#9660;</span>
+              <!-- Menu -->
+              <div class="menu">
+                <div class="wrapper">
+                  <div class="prod-cat">
+                    <h3>Product categories</h3>
+                    <div>
+                      <ul>
+                        <li><a href="./404.html">Accessories</a></li>
+                        <li><a href="./404.html">Alcohol</a></li>
+                        <li><a href="./404.html">Art</a></li>
+                        <li><a href="./404.html">Books</a></li>
+                        <li><a href="./404.html">Drink</a></li>
+                        <li><a href="./404.html">Electronics</a></li>
+                        <li><a href="./404.html">Flowers & Plants</a></li>
+                        <li><a href="./404.html">Food</a></li>
+                      </ul>
+                      <ul>
+                        <li><a href="./404.html">Gadgets</a></li>
+                        <li><a href="./404.html">Garden</a></li>
+                        <li><a href="./404.html">Grocery</a></li>
+                        <li><a href="./404.html">Home</a></li>
+                        <li><a href="./404.html">Jewerly</a></li>
+                        <li><a href="./404.html">Kids & Baby</a></li>
+                        <li><a href="./404.html">Men's Fashion</a></li>
+                        <li><a href="./404.html">Mobile</a></li>
+                      </ul>
+                      <ul>
+                        <li><a href="./404.html">Motorcycles</a></li>
+                        <li><a href="./404.html">Movies</a></li>
+                        <li><a href="./404.html">Music</a></li>
+                        <li><a href="./404.html">Office</a></li>
+                        <li><a href="./404.html">Pets</a></li>
+                        <li><a href="./404.html">Romantic</a></li>
+                        <li><a href="./404.html">Sport</a></li>
+                        <li><a href="./404.html">Toys</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="sale">
+                    <h3>Sale</h3>
+                    <ul>
+                      <li><a href="./404.html">Accessories</a></li>
+                      <li><a href="./404.html">Alcohol</a></li>
+                      <li><a href="./404.html">Art</a></li>
+                      <li><a href="./404.html">Books</a></li>
+                      <li><a href="./404.html">Drink</a></li>
+                      <li><a href="./404.html">Electronics</a></li>
+                      <li><a href="./404.html">Flowers & Plants</a></li>
+                      <li><a href="./404.html">Food</a></li>
+                    </ul>
+                  </div>
+                  <img src="img/home/navbanner.png" alt="navbanner" />
+                </div>
+              </div>
+            </li>
+            <li>Company</li>
+            <li>Library</li>
+            <li>Contact Us</li>
+          </ul>
 
-					<!-- Tabs -->
-					<div class="info">
-						<ul>
-							<li class="active">Description</li>
-							<li>Additional information</li>
-							<li>Reviews (3)</li>
-						</ul>
-						<div class="tab-box">
-							<!-- Tab 1 -->
-							<div class="tab active">
-								<p>
-									Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-								</p>
-								<p>
-									Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-								</p>
-							</div>
-							<!-- Tab 2 -->
-							<div class="tab">
-								<p>
-									Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-								</p>
-								<p>
-									Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-								</p>
-							</div>
-							<!-- Tab 3 -->
-							<div class="tab">
-								<p>
-									Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-								</p>
-								<p>
-									Aenean commodo ligula eget dolor. Aenean massa.
-								</p>
-								<p>
-									Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+          <ul class="nav-lang">
+            <li>EN<span class="arrow-down">&#9660;</span></li>
+            <li>$ US<span class="arrow-down">&#9660;</span></li>
+          </ul>
 
-		<!-- Popular Items -->
-		<section class="pop-items">
-			<div class="wrapper">
-				<h2>Popular items</h2>
-				<div class="items">
-					<!-- ---------- Row 1 ---------- -->
-					<div class="item">
-						<div class="img" style="background-image: url(img/pdp/pop-items/item1.jpg)"></div>
-						<h4 class="name">Kristina Dam Oak Table With White Marble Top</h4>
-						<span>$ 799.55</span>
-						<div class="overlay">
-							<button>
-								<img src="img/icons/plus.svg" alt="plus">
-							</button>
-							<button>
-								<img src="img/icons/heart-filled.svg" alt="like">
-							</button>
-						</div>
-					</div>
-					<div class="item">
-						<div class="img" style="background-image: url(img/pdp/pop-items/item2.jpg)"></div>
-						<h4 class="name">Kristina Dam Oak Table With White Marble Top</h4>
-						<span>$ 2195.00</span>
-						<div class="overlay">
-							<button>
-								<img src="img/icons/plus.svg" alt="plus">
-							</button>
-							<button>
-								<img src="img/icons/heart-filled.svg" alt="like">
-							</button>
-						</div>
-					</div>
-					<div class="item">
-						<div class="img" style="background-image: url(img/pdp/pop-items/item3.jpg)"></div>
-						<h4 class="name">Activate Facial Mask and Charcoal Soap</h4>
-						<span>$ 129.55</span>
-						<div class="overlay">
-							<button>
-								<img src="img/icons/plus.svg" alt="plus">
-							</button>
-							<button>
-								<img src="img/icons/heart-filled.svg" alt="like">
-							</button>
-						</div>
-					</div>
-					<div class="item">
-						<div class="img" style="background-image: url(img/pdp/pop-items/item4.jpg)"></div>
-						<h4 class="name">Cocktail Table Walnut | <br>YES</h4>
-						<span>$ 629.99</span>
-						<div class="overlay">
-							<button>
-								<img src="img/icons/plus.svg" alt="plus">
-							</button>
-							<button>
-								<img src="img/icons/heart-filled.svg" alt="like">
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+          <ul class="nav-manage">
+           <li><button>
+              <i class="fas fa-search"></i>
+            </button></li>
+					  <li><button id="openSignin">
+              <i class="far fa-user"></i>
+            </button></li>
+				 	  <li><button id="wishlist">
+              <i class="far fa-heart"></i>
+              <span id="wishlistAmount">0</span>
+					  </button></li>
+            <li>
+              <a href="./cart.html" id="cart">
+              <i class="fas fa-shopping-bag"></i>
+              <span id="cartAmount">0</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-		<!-- Benefits -->
-		<section class="benefits">
-			<div class="wrapper">
-				<div class="card">
-					<img src="img/home/benefits/delivery.svg" alt="delivery">
-					<div class="info">
-						<h4>Focus</h4>
-						<p>Our unwavering focus on superior service delivery and building next generation competencies</p>
-					</div>
-				</div>
-				<div class="card">
-					<img src="img/home/benefits/recycle.svg" alt="recycle">
-					<div class="info">
-						<h4>Method</h4>
-						<p>A standardized methodology designed to deliver measurable business results and predictable costs</p>
-					</div>
-				</div>
-				<div class="card">
-					<img src="img/home/benefits/clipboard.svg" alt="clipboard">
-					<div class="info">
-						<h4>Knowledge</h4>
-						<p>A highly skilled, proactive workforce that reliably improves each client’s ROI while mitigating their business risk</p>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- Main -->
+    <main>
+      <!-- Breadcrumbs -->
+      <section class="breadcrumbs">
+        <div class="wrapper">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>/</li>
+            <li><a href="#">OSF Theme</a></li>
+            <li>/</li>
+            <li>Archi Desk Accessoris Pen Cup</li>
+          </ul>
+          <h2>Archi Desk Accessoris Pen Cup</h2>
+        </div>
+      </section>
 
-	</main>
+      <!-- Product -->
+      <section class="product">
+        <div class="wrapper">
+          <div class="sub-wrapper">
+            <!-- View product -->
+            <div class="overview">
+              <i class="fas fa-expand-arrows-alt"></i>
+              <div class="large">
+                <img
+                  class="active"
+                  src="img/pdp/product/black-front.jpg"
+                  alt="black-front"
+                />
+                <img src="img/pdp/product/black-back.jpg" alt="black-back" />
+                <img src="img/pdp/product/aqua-front.jpg" alt="aqua-front" />
+                <img src="img/pdp/product/aqua-back.jpg" alt="aqua-back" />
+              </div>
+              <div class="small">
+                <img
+                  class="active"
+                  src="img/pdp/product/black-front.jpg"
+                  alt="black-front"
+                  class="active"
+                />
+                <img src="img/pdp/product/black-back.jpg" alt="black-back" />
+                <img src="img/pdp/product/aqua-front.jpg" alt="aqua-front" />
+                <img src="img/pdp/product/aqua-back.jpg" alt="aqua-back" />
+              </div>
+              <div class="about">
+                <span class="price">$299.99</span>
+                <!-- * Custom select input -->
+                <div class="colorpick">
+                  <ul>
+                    <li class="active" style="background-color: #585d61"></li>
+                    <li style="background-color: aqua"></li>
+                  </ul>
+                  <select name="colorpick">
+                    <option value="Dark Gray">Dark Gray</option>
+                    <option value="Aqua">Aqua</option>
+                  </select>
+                </div>
+                <div class="add">
+                  <!-- * Custom number input -->
+                  <div class="amountpick">
+                    <button class="minus">-</button>
+                    <input type="number" name="amountpick" />
+                    <button class="plus">+</button>
+                  </div>
+                  <button>Add to cart</button>
+                </div>
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore Beatae vitae dicta sunt explicabo.
+                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                  odit aut fugit, sed quia consequuntur magni dolores eos qui
+                  ratione voluptatem sequi nesciunt. Neque porro quisquam est,
+                  qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                  velit, sed quia non numquam eius modi tempora incidunt ut
+                  labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad
+                  minima veniam, quis nostrum exercitationem ullam corporis
+                  suscipit laboriosam, nisi ut aliquid ex ea commodi
+                  consequatur? Quis autem vel eum iure reprehenderit qui in ea
+                  voluptate velit esse quam nihil molestiae consequatur, vel
+                  illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                </p>
+                <div class="share">
+                  <ul>
+                    <li>
+                      <span>Share</span>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-google-plus-g"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fab fa-pinterest-p"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-	<!-- Footer -->
-	<footer>
-		<div class="wrapper">
-				<div class="contact">
-				<span>© Copyright <span id="year"></span>.<br>
-					All Rights Reserved.</span>
-				<h3>Contact</h3>
-				<ul>
-					<li>Headquarters:<br>
-						5600, Blvd. des Galeries, Bur 530 Québec, Québec G2K 2H6</li>
-					<li><a href="mailto:contact@osf-global.com">contact@osf-global.com</a></li>
-					<li><a href="tel:+1-888-548-4344">+1 (888) 548-4344</a></li>
-				</ul>
-			</div>
-			<div class="categories">
-					<h3>Categories</h3>
-					<div>
-						<ul>
-							<li><a href="./404.html">Alcohol</a></li>
-							<li><a href="./404.html">Art</a></li>
-							<li><a href="./404.html">Books</a></li>
-							<li><a href="./404.html">Drink</a></li>
-							<li><a href="./404.html">Electronics</a></li>
-						</ul>
-						<ul>
-							<li><a href="./404.html">Home</a></li>
-							<li><a href="./404.html">Jewerly</a></li>
-							<li><a href="./404.html">Kids & Baby</a></li>
-							<li><a href="./404.html">Men's Fashion</a></li>
-							<li><a href="./404.html">Mobile</a></li>
-							<li><a href="./404.html">Motorcycles</a></li>
-							<li><a href="./404.html">Movies</a></li>
-							<li><a href="./404.html">Music</a></li>
-						</ul>
-						<ul>
-							<li><a href="./404.html">Sport</a></li>
-							<li><a href="./404.html">Toys</a></li>
-							<li><a href="./404.html">Travel</a></li>
-							<li><a href="./404.html">Women's Fashion</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="about">
-					<h3>About</h3>
-				<ul>
-					<li><a href="./404.html">About Us</a></li>
-						<li><a href="./404.html">Delivery</a></li>
-						<li><a href="./404.html">Testimonials</a></li>
-						<li><a href="./404.html">Contact</a></li>
-				</ul>
-			</div>
-			<div class="social">
-				<ul>
-					<li><a href="https://www.facebook.com/OSFGlobalServices/">
-							<i class="fab fa-facebook-f"></i>
-						</a></li>
-						<li><a href="https://www.google.com">
-							<i class="fab fa-google-plus-g"></i>
-						</a></li>
-						<li><a href="https://twitter.com/osfglobal">
-							<i class="fab fa-twitter"></i>
-						</a></li>
-						<li><a href="https://www.pinterest.ca/osfglobal/">
-							<i class="fab fa-pinterest-p"></i>
-						</a></li>
-				</ul>
-			</div>
-		</div>
-	</footer>
+            <!-- Tabs -->
+            <div class="info">
+              <ul>
+                <li class="active">Description</li>
+                <li>Additional information</li>
+                <li>Reviews (3)</li>
+              </ul>
+              <div class="tab-box">
+                <!-- Tab 1 -->
+                <div class="tab active">
+                  <p>
+                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                    natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus.
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                    Aenean commodo ligula eget dolor. Aenean massa.
+                  </p>
+                  <p>
+                    Cum sociis natoque penatibus et magnis dis parturient
+                    montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                    nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                    massa quis enim. Donec pede justo, fringilla vel, aliquet
+                    nec, vulputate eget, arcu.
+                  </p>
+                </div>
+                <!-- Tab 2 -->
+                <div class="tab">
+                  <p>
+                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                    natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus.
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                    Aenean commodo ligula eget dolor. Aenean massa.
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                    Aenean commodo ligula eget dolor. Aenean massa.
+                  </p>
+                  <p>
+                    Cum sociis natoque penatibus et magnis dis parturient
+                    montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                    nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                    massa quis enim. Donec pede justo, fringilla vel, aliquet
+                    nec, vulputate eget, arcu.
+                  </p>
+                </div>
+                <!-- Tab 3 -->
+                <div class="tab">
+                  <p>
+                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                    natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus.
+                  </p>
+                  <p>Aenean commodo ligula eget dolor. Aenean massa.</p>
+                  <p>
+                    Donec quam felis, ultricies nec, pellentesque eu, pretium
+                    quis, sem. Nulla consequat massa quis enim. Donec pede
+                    justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-	<script src="js/pdp.js"></script>
-</body>
+      <!-- Popular Items -->
+      <section class="pop-items">
+        <div class="wrapper">
+          <h2>Popular items</h2>
+          <div class="items">
+            <!-- ---------- Row 1 ---------- -->
+            <div class="item">
+              <div
+                class="img"
+                style="background-image: url(img/pdp/pop-items/item1.jpg)"
+              ></div>
+              <h4 class="name">Kristina Dam Oak Table With White Marble Top</h4>
+              <span>$ 799.55</span>
+              <div class="overlay">
+                <button>
+                  <img src="img/icons/plus.svg" alt="plus" />
+                </button>
+                <button>
+                  <img src="img/icons/heart-filled.svg" alt="like" />
+                </button>
+              </div>
+            </div>
+            <div class="item">
+              <div
+                class="img"
+                style="background-image: url(img/pdp/pop-items/item2.jpg)"
+              ></div>
+              <h4 class="name">Kristina Dam Oak Table With White Marble Top</h4>
+              <span>$ 2195.00</span>
+              <div class="overlay">
+                <button>
+                  <img src="img/icons/plus.svg" alt="plus" />
+                </button>
+                <button>
+                  <img src="img/icons/heart-filled.svg" alt="like" />
+                </button>
+              </div>
+            </div>
+            <div class="item">
+              <div
+                class="img"
+                style="background-image: url(img/pdp/pop-items/item3.jpg)"
+              ></div>
+              <h4 class="name">Activate Facial Mask and Charcoal Soap</h4>
+              <span>$ 129.55</span>
+              <div class="overlay">
+                <button>
+                  <img src="img/icons/plus.svg" alt="plus" />
+                </button>
+                <button>
+                  <img src="img/icons/heart-filled.svg" alt="like" />
+                </button>
+              </div>
+            </div>
+            <div class="item">
+              <div
+                class="img"
+                style="background-image: url(img/pdp/pop-items/item4.jpg)"
+              ></div>
+              <h4 class="name">Cocktail Table Walnut | <br />YES</h4>
+              <span>$ 629.99</span>
+              <div class="overlay">
+                <button>
+                  <img src="img/icons/plus.svg" alt="plus" />
+                </button>
+                <button>
+                  <img src="img/icons/heart-filled.svg" alt="like" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits -->
+      <section class="benefits">
+        <div class="wrapper">
+          <div class="card">
+            <img src="img/home/benefits/delivery.svg" alt="delivery" />
+            <div class="info">
+              <h4>Focus</h4>
+              <p>
+                Our unwavering focus on superior service delivery and building next generation competencies
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="img/home/benefits/recycle.svg" alt="recycle" />
+            <div class="info">
+              <h4>Method</h4>
+              <p>
+                A standardized methodology designed to deliver measurable
+                business results and predictable costs
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="img/home/benefits/clipboard.svg" alt="clipboard" />
+            <div class="info">
+              <h4>Knowledge</h4>
+              <p>
+                A highly skilled, proactive workforce that reliably improves
+                each client’s ROI while mitigating their business risk
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="wrapper">
+        <div class="contact">
+          <span
+            >© Copyright <span id="year"></span>.<br />
+            All Rights Reserved.</span
+          >
+          <h3>Contact</h3>
+          <ul>
+            <li>
+              Headquarters:<br />
+              5600, Blvd. des Galeries, Bur 530 Québec, Québec G2K 2H6
+            </li>
+            <li>
+              <a href="mailto:contact@osf-global.com">contact@osf-global.com</a>
+            </li>
+            <li><a href="tel:+1-888-548-4344">+1 (888) 548-4344</a></li>
+          </ul>
+        </div>
+        <div class="categories">
+          <h3>Categories</h3>
+          <div>
+            <ul>
+              <li><a href="./404.html">Alcohol</a></li>
+              <li><a href="./404.html">Art</a></li>
+              <li><a href="./404.html">Books</a></li>
+              <li><a href="./404.html">Drink</a></li>
+              <li><a href="./404.html">Electronics</a></li>
+            </ul>
+            <ul>
+              <li><a href="./404.html">Home</a></li>
+              <li><a href="./404.html">Jewerly</a></li>
+              <li><a href="./404.html">Kids & Baby</a></li>
+              <li><a href="./404.html">Men's Fashion</a></li>
+              <li><a href="./404.html">Mobile</a></li>
+              <li><a href="./404.html">Motorcycles</a></li>
+              <li><a href="./404.html">Movies</a></li>
+              <li><a href="./404.html">Music</a></li>
+            </ul>
+            <ul>
+              <li><a href="./404.html">Sport</a></li>
+              <li><a href="./404.html">Toys</a></li>
+              <li><a href="./404.html">Travel</a></li>
+              <li><a href="./404.html">Women's Fashion</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="about">
+          <h3>About</h3>
+          <ul>
+            <li><a href="./404.html">About Us</a></li>
+            <li><a href="./404.html">Delivery</a></li>
+            <li><a href="./404.html">Testimonials</a></li>
+            <li><a href="./404.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="social">
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/OSFGlobalServices/">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.google.com">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/osfglobal">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.pinterest.ca/osfglobal/">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Link Firebase -->
+	  <script src="js/firebase/firebase-app.js"></script>
+
+    <!-- Import basic functionality -->
+	  <script src="js/_basicF.js"></script>
+
+    <!-- Link special page scripts -->
+    <script src="js/pdp.js"></script>
+  </body>
 </html>

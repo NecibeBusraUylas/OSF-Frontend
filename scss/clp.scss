@@ -7,7 +7,6 @@
 // Import variables
 @import "base/_variables.scss";
 
-
 /* Header ------------------------------------------------ */
 @import "./layout/header";
 
@@ -15,6 +14,7 @@ main {
     /* Breadcrumbs ----------------------------------------- */
     $length: 40%;
     $length-color: #fff;
+
     @import "./layout/breadcrumbs";
 
     /* Popular Items ----------------------------------------- */
@@ -127,18 +127,24 @@ main {
             //items
             @import "./layout/items";
 
-            button.btn {
+            button#loadMore {
                 @extend %btn;
-                margin-top: to-rem(120px);
-                padding: to-rem(10px) to-rem(42px);
-                color: #fff;
-                font-size: 1rem;
-                border: none;
-                background-color: #84bc22;
+                margin-top: to-rem(51px);
+                padding: to-rem(10px) to-rem(90px);
+                color: #84bc22;
+                background-color: white;
+                border-color: transparent;
+                font-size: 0.8rem;
+                &.enabled {
+                    background-color: #84bc22;
+                    color: white;
+                    border-color: transparent;
 
-                &:hover {
-                    background-color: #fff;
-                    color: inherit;
+                    &:hover {
+                        color: #84bc22;
+                        background-color: white;
+                        border-color: #84bc22;
+                    }
                 }
             }
         }

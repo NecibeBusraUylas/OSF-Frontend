@@ -134,24 +134,20 @@
           </ul>
 
           <ul class="nav-manage">
-            <li>
-              <a href="#">
-                <i class="fas fa-search"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" id="openSignin">
-                <i class="far fa-user"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" id="wishlist">
-                <i class="far fa-heart"></i>
-              </a>
-            </li>
+            <li><button>
+              <i class="fas fa-search"></i>
+            </button></li>
+					  <li><button id="openSignin">
+              <i class="far fa-user"></i>
+            </button></li>
+				 	  <li><button id="wishlist">
+              <i class="far fa-heart"></i>
+              <span id="wishlistAmount">0</span>
+					  </button></li>
             <li>
               <a href="./cart.html" id="cart">
-                <i class="fas fa-shopping-bag"></i>
+              <i class="fas fa-shopping-bag"></i>
+              <span id="cartAmount">0</span>
               </a>
             </li>
           </ul>
@@ -278,5 +274,11 @@
         </div>
       </div>
     </footer>
+
+    <!-- Link Firebase -->
+	<script src="js/firebase/firebase-app.js"></script>
+
+	<!-- Import basic functionality -->
+	<script src="js/basicF.js"></script>
   </body>
 </html>

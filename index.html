@@ -14,6 +14,45 @@
 </head>
 <body>
 
+	<!-- Overlay -->
+	<div id="overlay">
+		<!-- Cookies Modal -->
+		<div id="cookies">
+			<div class="subwrapper">
+				<h6>This website uses cookies</h6>
+				<p>
+					OSF uses its own and third-party cookies for statistical purposes, to know your preferences, for website performance and interaction with social media offering publicity tailored to your interests. If you continue browsing, we consider that you accept its use.<br>
+					You can expand this information consulting our <a href="#">Cookies Policy Page</a>.
+					<button id="accept-cookies" class="btn">Accept</button>
+					<span id="close-cookies"><i class="fas fa-times"></i></span>
+				</p>
+			</div>
+		</div>
+
+		<!-- Sign In modal -->
+		<form id="signinForm">
+			<h3>Sign in</h3>
+
+			<label for="email">Email</label>
+			<input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
+			<div class="forgot">
+				<label for="password">Password</label>
+				<a href="#">forgot password</a>
+			</div>
+			<div class="password">
+				<span class="showPassword">
+					<i class="far fa-eye"></i>
+				</span>
+				<!-- At least 6 characters length, contain 1 numeric, 1 uppercase letter, 1 special character -->
+				<input type="password" name="password" pattern="(?=.*\d)(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~])(?=.*[A-Z]).{6,}" required>
+			</div>
+
+			<input type="submit" value="Login" id="login">
+			<a href="#" class="register">I don't have an account</a>
+		</form>
+	</div>
+
 	<!-- Header -->
 	<header>
 		<div class="wrapper">
@@ -93,16 +132,18 @@
 				</ul>
 				<ul class="nav-manage">
 					<li><button>
-						<img src="img/icons/search.svg" alt="search">
+						<i class="fas fa-search"></i>
 					</button></li>
 					<li><button id="openSignin">
-						<img src="img/icons/user.svg" alt="user">
+						<i class="far fa-user"></i>
 					</button></li>
 					<li><button id="wishlist">
-						<img src="img/icons/heart.svg" alt="heart">
+						<i class="far fa-heart"></i>
+						<span id="wishlistAmount">0</span>
 					</button></li>
 					<li><a href="./cart.html" id="cart">
-						<img src="img/icons/bag.svg" alt="bag">
+						<i class="fas fa-shopping-bag"></i>
+						<span id="cartAmount">0</span>
 					</a></li>
 				</ul>
 			</nav>
@@ -195,12 +236,11 @@
 						<a href="./pdp.html">
 							<div class="img" style="background-image: url(img/home/items/item2.jpg)"></div>
 						</a>
-						<a href="./pdp.html">
-						<h4 class="name">Hay - About A Lounge Chair AAL 93</h4>
-						</a>
-						<a href="./pdp.html">
+						<h4 class="name"><a href="./pdp.html">
+							Hay - About A Lounge Chair AAL 93
+						</a></h4>
 							<div class="paired">
-								<span>$659.55</span><button>Buy now</button>
+								<span><a href="./pdp.html">$659.55</a></span><button><a href="./pdp.html">Buy now</a></button>
 						    </div>
 						</a>
 					</div>
@@ -270,19 +310,20 @@
 							</button>
 						</div>
 					</div>
-					<div class="item">
-						<section class="img">
-							<div class="content">
+					<div class="item com">
+						<div class="img" style="background-image: url(img/home/items/item8.jpg)"></div>
+						<div class="com-overlay">
+							<blockquote>
 								My dragons are misbehaving again. Unbelieveable!
 								<p>
 									<img src="img/icons/by.svg" alt="by user">
 									5H AGO
 								</p>
-							</div>
-						</section>
+							</blockquote>
+						</div>
 					</div>
 				</div>
-				<button class="btn">Load more</button>
+				<button class="btn enabled" id="loadMore">Load more</button>
 			</div>
 		</section>
 		<section class="banner img" style="background-image: url(img/home/banner.jpg)">
@@ -430,6 +471,14 @@
 			</div>
 		</div>
 	</footer>
+	
+	<!-- Link Firebase -->
+	<script src="js/firebase/firebase-app.js"></script>
+
+	<!-- Import basic functionality -->
+	<script src="js/basicF.js"></script>
+
+	<!-- Link special page scripts -->
 	<script src="js/index.js"></script>
 </body>
 </html> 

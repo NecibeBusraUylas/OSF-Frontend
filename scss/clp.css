@@ -24,6 +24,11 @@ body {
 }
 
 body.noscroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
 }
 
@@ -57,7 +62,7 @@ a, button, input[type="submit"] {
   background-color: transparent;
 }
 
-#signinForm input#login[type="submit"], main section.pop-items .wrapper button.btn {
+#signinForm input#login[type="submit"], main section.pop-items .wrapper button#loadMore {
   text-transform: uppercase;
   font-size: to-rem(16px);
   padding: to-rem(8px) to-rem(20px);
@@ -692,9 +697,9 @@ main section.pop-items .wrapper .items {
       flex-wrap: wrap;
   margin: 0 -1%;
   color: #240f3d;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 main section.pop-items .wrapper .items .item {
@@ -727,18 +732,10 @@ main section.pop-items .wrapper .items .item .img {
   border-radius: 10px 10px 0 0;
 }
 
-main section.pop-items .wrapper .items .item .img .content {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(188, 105, 137, 0.5)), to(rgba(113, 102, 150, 0.5))), url("../img/home/items/item8.jpg");
-  background-image: linear-gradient(to bottom, rgba(188, 105, 137, 0.5), rgba(113, 102, 150, 0.5)), url("../img/home/items/item8.jpg");
-  height: 26.5rem;
-  border-radius: 10px 10px 10px 10px;
-  background-size: cover;
-  padding: 270px 120px 20px 0px;
-  color: #fff;
-}
-
-main section.pop-items .wrapper .items .item .img .content p {
-  padding: 65px 0 0 0;
+main section.pop-items .wrapper .items .item > a {
+  width: 100%;
+  height: 18.57143rem;
+  border-radius: 10px 10px 0 0;
 }
 
 main section.pop-items .wrapper .items .item h4.name {
@@ -767,14 +764,10 @@ main section.pop-items .wrapper .items .item .paired {
   font-weight: bold;
 }
 
-main section.pop-items .wrapper .items .item .paired * {
+main section.pop-items .wrapper .items .item .paired span {
+  margin: 0;
   padding: 0.71429rem 1.21429rem;
   border: 3px groove black;
-}
-
-main section.pop-items .wrapper .items .item .paired span {
-  padding: 0.71429rem 1.21429rem;
-  border: 1px groove #585555;
   border-radius: 30px 0 0 30px;
   border-right: none;
 }
@@ -784,7 +777,9 @@ main section.pop-items .wrapper .items .item .paired span a {
 }
 
 main section.pop-items .wrapper .items .item .paired button {
-  border-radius: 0 10px 10px 0;
+  padding: 0.71429rem 1.21429rem;
+  border: 3px groove black;
+  border-radius: 0 30px 30px 0;
   color: #000;
   font-size: 1rem;
   background-color: transparent;
@@ -796,6 +791,10 @@ main section.pop-items .wrapper .items .item .paired button:hover {
   background: -webkit-gradient(linear, left bottom, left top, from(#1cc167), to(#2ed3a2));
   background: linear-gradient(to top, #1cc167, #2ed3a2);
   color: #fff;
+}
+
+main section.pop-items .wrapper .items .item .paired button a {
+  color: #24c36c;
 }
 
 main section.pop-items .wrapper .items .item .overlay {
@@ -814,13 +813,13 @@ main section.pop-items .wrapper .items .item .overlay {
 }
 
 main section.pop-items .wrapper .items .item .overlay button {
-  display: inline-block;
-  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  background-color: white;
   padding: 2.21429rem;
   border-radius: 100%;
-  border: 1px solid #fff;
+  border: 1px solid white;
   cursor: pointer;
-  margin-top: 50%;
 }
 
 main section.pop-items .wrapper .items .item .overlay button:hover {
@@ -829,8 +828,16 @@ main section.pop-items .wrapper .items .item .overlay button:hover {
           box-shadow: 0 0 20px #0f6837;
 }
 
-main section.pop-items .wrapper .items .item .overlay button:nth-child(1) {
-  margin-right: 1.57143rem;
+main section.pop-items .wrapper .items .item .overlay button.addToCart {
+  left: 15%;
+  -webkit-transform: translate(-15%, -50%);
+          transform: translate(-15%, -50%);
+}
+
+main section.pop-items .wrapper .items .item .overlay button.addToWishlist {
+  right: 15%;
+  -webkit-transform: translate(15%, -50%);
+          transform: translate(15%, -50%);
 }
 
 main section.pop-items .wrapper .items .item .overlay button img {
@@ -839,18 +846,80 @@ main section.pop-items .wrapper .items .item .overlay button img {
   height: 2rem;
 }
 
-main section.pop-items .wrapper button.btn {
-  margin-top: 8.57143rem;
-  padding: 0.71429rem 3rem;
-  color: #fff;
-  font-size: 1rem;
-  border: none;
-  background-color: #84bc22;
+main section.pop-items .wrapper .items .item.com {
+  padding-bottom: 0;
 }
 
-main section.pop-items .wrapper button.btn:hover {
-  background-color: #fff;
-  color: inherit;
+main section.pop-items .wrapper .items .item.com .img {
+  height: 100%;
+  border-radius: 10px;
+}
+
+main section.pop-items .wrapper .items .item.com .com-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: -webkit-gradient(linear, left bottom, left top, from(#675b99), to(#dc5987));
+  background: linear-gradient(to top, #675b99, #dc5987);
+  border-radius: inherit;
+  opacity: 0.8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 2.5rem 2.14286rem;
+  text-align: left;
+}
+
+main section.pop-items .wrapper .items .item.com .com-overlay * {
+  color: white;
+}
+
+main section.pop-items .wrapper .items .item.com .com-overlay blockquote {
+  width: 70%;
+  font-size: 1.14286rem;
+  line-height: 1.5;
+}
+
+main section.pop-items .wrapper .items .item.com .com-overlay blockquote p {
+  margin-top: 2.14286rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+main section.pop-items .wrapper .items .item.com .com-overlay blockquote p img {
+  margin: 0 0.7rem;
+  -webkit-transform: scale(1.8);
+          transform: scale(1.8);
+}
+
+main section.pop-items .wrapper button#loadMore {
+  margin-top: 3.64286rem;
+  padding: 0.71429rem 6.42857rem;
+  color: #84bc22;
+  background-color: white;
+  border-color: transparent;
+  font-size: 0.8rem;
+}
+
+main section.pop-items .wrapper button#loadMore.enabled {
+  background-color: #84bc22;
+  color: white;
+  border-color: transparent;
+}
+
+main section.pop-items .wrapper button#loadMore.enabled:hover {
+  color: #84bc22;
+  background-color: white;
+  border-color: #84bc22;
 }
 
 main section.feat-prod {

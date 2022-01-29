@@ -13,6 +13,59 @@
     <link rel="stylesheet" href="./scss/clp.css" />
   </head>
   <body>
+    <!-- Overlay -->
+    <div id="overlay"></div>
+
+    <!-- Cookies Modal -->
+    <div id="cookies">
+      <div class="subwrapper">
+        <h6>This website uses cookies</h6>
+        <p>
+          OSF uses its own and third-party cookies for statistical purposes, to
+          know your preferences, for website performance and interaction with
+          social media offering publicity tailored to your interests. If you
+          continue browsing, we consider that you accept its use.<br />
+          You can expand this information consulting our
+          <a href="#">Cookies Policy Page</a>.
+          <button id="accept-cookies" class="btn">Accept</button>
+          <span id="close-cookies"><i class="fas fa-times"></i></span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Sign In modal -->
+    <form id="signinForm">
+      <h3>Sign in</h3>
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        required
+      />
+
+      <div class="forgot">
+        <label for="password">Password</label>
+        <a href="#">forgot password</a>
+      </div>
+      <div class="password">
+        <span class="showPassword">
+          <i class="far fa-eye"></i>
+        </span>
+        <!-- At least 6 characters length, contain 1 numeric, 1 uppercase letter, 1 special character -->
+        <input
+          type="password"
+          name="password"
+          pattern="(?=.*\d)(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~])(?=.*[A-Z]).{6,}"
+          required
+        />
+      </div>
+
+      <input type="submit" value="Login" id="login" />
+      <a href="#" class="register">I don't have an account</a>
+    </form>
+
     <!-- Header -->
     <header>
       <div class="wrapper">
@@ -95,24 +148,20 @@
           </ul>
 
           <ul class="nav-manage">
-            <li>
-              <a href="#">
-                <img src="img/icons/search.svg" alt="search" />
-              </a>
-            </li>
-            <li>
-              <a href="#" id="openSignin">
-                <img src="img/icons/user.svg" alt="user" />
-              </a>
-            </li>
-            <li>
-              <a href="#" id="wishlist">
-                <img src="img/icons/heart.svg" alt="heart" />
-              </a>
-            </li>
+            <li><button>
+              <i class="fas fa-search"></i>
+            </button></li>
+					  <li><button id="openSignin">
+              <i class="far fa-user"></i>
+            </button></li>
+				 	  <li><button id="wishlist">
+              <i class="far fa-heart"></i>
+              <span id="wishlistAmount">0</span>
+					  </button></li>
             <li>
               <a href="./cart.html" id="cart">
-                <img src="img/icons/bag.svg" alt="bag" />
+              <i class="fas fa-shopping-bag"></i>
+              <span id="cartAmount">0</span>
               </a>
             </li>
           </ul>
@@ -194,10 +243,10 @@
               <h4 class="name">Kristina Dam Oak Table With White Marble Top</h4>
               <span>$ 799.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -210,10 +259,10 @@
               <h4 class="name">EAMES x Cast + Crew - Custom Powder Coated</h4>
               <span>$ 799.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -226,10 +275,10 @@
               <h4 class="name">Activate Facial Mask and Charcoal Soap</h4>
               <span>$ 129.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -244,10 +293,10 @@
               </h4>
               <span>$ 299.99</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -261,10 +310,10 @@
               <h4 class="name">Hay - About A Lounge Chair AAL 93</h4>
               <span>$ 659.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -277,10 +326,10 @@
               <h4 class="name">TORY DESK CALENDAR</h4>
               <span>$ 410.99</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -293,10 +342,10 @@
               <h4 class="name">CH445 Wing Chair on SUITE NY</h4>
               <span>$ 330.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -309,10 +358,10 @@
               <h4 class="name">CH445 Wing Chair on SUITE NY</h4>
               <span>$ 330.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -326,10 +375,10 @@
               <h4 class="name">Kristina Dam Oak Table With White Marble Top</h4>
               <span>$ 2195.00</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -342,10 +391,10 @@
               <h4 class="name">MONOQI | Ø55 Crossit Table - Wht/Grn</h4>
               <span>$ 299.99</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -360,10 +409,10 @@
               </h4>
               <span>$ 870.95</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -376,10 +425,10 @@
               <h4 class="name">Activate Facial Mask and Charcoal Soap</h4>
               <span>$ 129.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -393,10 +442,10 @@
               <h4 class="name">Hay - About A Lounge Chair AAL 93</h4>
               <span>$ 659.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -409,10 +458,10 @@
               <h4 class="name">TORY DESK CALENDAR</h4>
               <span>$ 410.99</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -425,10 +474,10 @@
               <h4 class="name">EAMES x Cast + Crew - Custom Powder Coated</h4>
               <span>$ 330.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
@@ -441,16 +490,16 @@
               <h4 class="name">CH445 Wing Chair on SUITE NY</h4>
               <span>$ 330.55</span>
               <div class="overlay">
-                <button>
+                <button class="addToCart">
                   <img src="img/icons/plus.svg" alt="plus" />
                 </button>
-                <button>
+                <button class="addToWishlist">
                   <img src="img/icons/heart-filled.svg" alt="like" />
                 </button>
               </div>
             </div>
           </div>
-          <button class="btn">Load more</button>
+          <button class="btn enabled" id="loadMore">Load more</button>
         </div>
       </section>
 
@@ -606,73 +655,94 @@
     <!-- Footer -->
     <footer>
       <div class="wrapper">
-       	<div class="contact">
-				<span>© Copyright <span id="year"></span>.<br>
-					All Rights Reserved.</span>
-				<h3>Contact</h3>
-				<ul>
-					<li>Headquarters:<br>
-						5600, Blvd. des Galeries, Bur 530 Québec, Québec G2K 2H6</li>
-					<li><a href="mailto:contact@osf-global.com">contact@osf-global.com</a></li>
-					<li><a href="tel:+1-888-548-4344">+1 (888) 548-4344</a></li>
-				</ul>
-			</div>
+        <div class="contact">
+          <span
+            >© Copyright <span id="year"></span>.<br />
+            All Rights Reserved.</span
+          >
+          <h3>Contact</h3>
+          <ul>
+            <li>
+              Headquarters:<br />
+              5600, Blvd. des Galeries, Bur 530 Québec, Québec G2K 2H6
+            </li>
+            <li>
+              <a href="mailto:contact@osf-global.com">contact@osf-global.com</a>
+            </li>
+            <li><a href="tel:+1-888-548-4344">+1 (888) 548-4344</a></li>
+          </ul>
+        </div>
         <div class="categories">
-					<h3>Categories</h3>
-					<div>
-						<ul>
-							<li><a href="./404.html">Alcohol</a></li>
-							<li><a href="./404.html">Art</a></li>
-							<li><a href="./404.html">Books</a></li>
-							<li><a href="./404.html">Drink</a></li>
-							<li><a href="./404.html">Electronics</a></li>
-						</ul>
-						<ul>
-							<li><a href="./404.html">Home</a></li>
-							<li><a href="./404.html">Jewerly</a></li>
-							<li><a href="./404.html">Kids & Baby</a></li>
-							<li><a href="./404.html">Men's Fashion</a></li>
-							<li><a href="./404.html">Mobile</a></li>
-							<li><a href="./404.html">Motorcycles</a></li>
-							<li><a href="./404.html">Movies</a></li>
-							<li><a href="./404.html">Music</a></li>
-						</ul>
-						<ul>
-							<li><a href="./404.html">Sport</a></li>
-							<li><a href="./404.html">Toys</a></li>
-							<li><a href="./404.html">Travel</a></li>
-							<li><a href="./404.html">Women's Fashion</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="about">
-					<h3>About</h3>
+          <h3>Categories</h3>
+          <div>
+            <ul>
+              <li><a href="./404.html">Alcohol</a></li>
+              <li><a href="./404.html">Art</a></li>
+              <li><a href="./404.html">Books</a></li>
+              <li><a href="./404.html">Drink</a></li>
+              <li><a href="./404.html">Electronics</a></li>
+            </ul>
+            <ul>
+              <li><a href="./404.html">Home</a></li>
+              <li><a href="./404.html">Jewerly</a></li>
+              <li><a href="./404.html">Kids & Baby</a></li>
+              <li><a href="./404.html">Men's Fashion</a></li>
+              <li><a href="./404.html">Mobile</a></li>
+              <li><a href="./404.html">Motorcycles</a></li>
+              <li><a href="./404.html">Movies</a></li>
+              <li><a href="./404.html">Music</a></li>
+            </ul>
+            <ul>
+              <li><a href="./404.html">Sport</a></li>
+              <li><a href="./404.html">Toys</a></li>
+              <li><a href="./404.html">Travel</a></li>
+              <li><a href="./404.html">Women's Fashion</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="about">
+          <h3>About</h3>
           <ul>
             <li><a href="./404.html">About Us</a></li>
-						<li><a href="./404.html">Delivery</a></li>
-						<li><a href="./404.html">Testimonials</a></li>
-						<li><a href="./404.html">Contact</a></li>
+            <li><a href="./404.html">Delivery</a></li>
+            <li><a href="./404.html">Testimonials</a></li>
+            <li><a href="./404.html">Contact</a></li>
           </ul>
         </div>
         <div class="social">
           <ul>
-            <li><a href="https://www.facebook.com/OSFGlobalServices/">
-							<i class="fab fa-facebook-f"></i>
-						</a></li>
-						<li><a href="https://www.google.com">
-							<i class="fab fa-google-plus-g"></i>
-						</a></li>
-						<li><a href="https://twitter.com/osfglobal">
-							<i class="fab fa-twitter"></i>
-						</a></li>
-						<li><a href="https://www.pinterest.ca/osfglobal/">
-							<i class="fab fa-pinterest-p"></i>
-						</a></li>
+            <li>
+              <a href="https://www.facebook.com/OSFGlobalServices/">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.google.com">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/osfglobal">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.pinterest.ca/osfglobal/">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </footer>
 
+   <!-- Link Firebase -->
+	 <script src="js/firebase/firebase-app.js"></script>
+    
+   <!-- Import basic functionality -->
+	 <script src="js/basicF.js"></script>
+
+    <!-- Link special page scripts -->
     <script src="js/clp.js"></script>
   </body>
 </html>
