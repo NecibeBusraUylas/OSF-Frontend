@@ -1,150 +1,177 @@
-// ========================== amounts.js ==========================
-
+/// ========================== amounts.js ==========================
 // Find elements, that will show the amounts
 const wishlistSpan = document.getElementById("wishlistAmount");
 const cartSpan = document.getElementById("cartAmount");
 
-// Get wishlistAmount from JSON, show it with span
-(function () {
-  // Get wishlistAmount from JSON, show it with span
-  firebase
-    .database()
-    .ref("/amounts/wishlist") // Link to the data
-    .once("value", (snap) => {
-      wishlistSpan.innerText = snap.val().length; // Get data
-    });
+function UpdateJSON () {
 
-  // Get cartAmount from JSON, show it with span
-  firebase
-    .database()
-    .ref("/amounts/cart")
-    .once("value", (snap) => {
-      cartSpan.innerText = snap.val().length;
-    });
-})();
+	// Get wishlistAmount from JSON, show it with span
+	firebase.database().ref("/amounts/wishlist") // Link to the data
+	.once('value', snap => {
+
+		let countCart = 0;
+
+		Object.values(snap.val()).forEach(object => {
+
+			countCart++;
+
+		});
+
+		wishlistSpan.innerText = countCart; // Get data
+
+	});
+
+	// Do the same for the Wishlist
+	firebase.database().ref("/amounts/cart")
+	.once('value', snap => {
+
+		let countWishlist = 0;
+
+		Object.values(snap.val()).forEach(object => {
+
+			countWishlist++;
+
+		});
+
+		cartSpan.innerText = countWishlist;
+
+	});
+
+}
+
+UpdateJSON();
 
 // ========================== cookies.js ==========================
-
 (function () {
-  // HTML needed: Overlay + Cookies Modal
-  document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("Cookies accepted") !== "true") {
-      // Get pointers
-      let overlay = document.getElementById("overlay");
-      const cookiesWindow = document.getElementById("cookies");
-      const closeCookies = document.getElementById("close-cookies");
-      const acceptCookies = document.getElementById("accept-cookies");
 
-      // Show cookies modal window in some seconds
-      setTimeout(() => {
-        overlay.classList.add("active");
-        document.body.classList.add("noscroll");
-        cookiesWindow.classList.add("active");
-      }, 1000);
+	// HTML needed: Overlay + Cookies Modal
 
-      // Close cookies button
-      closeCookies.addEventListener(
-        "click",
-        () => {
-          cookiesWindow.classList.remove("active");
-          overlay.classList.remove("active");
-          document.body.classList.remove("noscroll");
-        },
-        true
-      );
+	document.addEventListener("DOMContentLoaded", () => {
 
-      // Accept cookies button
-      acceptCookies.addEventListener(
-        "click",
-        () => {
-          localStorage.setItem("Cookies accepted", "true");
+		if (localStorage.getItem("Cookies accepted") !== "true") {
 
-          cookiesWindow.classList.remove("active");
-          overlay.classList.remove("active");
-          document.body.classList.remove("noscroll");
-        },
-        true
-      );
-    }
-  });
+			// Get pointers
+			let overlay = document.getElementById("overlay");
+			const cookiesWindow = document.getElementById("cookies");
+			const closeCookies = document.getElementById("close-cookies");
+			const acceptCookies = document.getElementById("accept-cookies");
+
+			// Show cookies modal window in some seconds
+			setTimeout(() => {
+
+				overlay.classList.add("active");
+				document.body.classList.add("noscroll");
+				cookiesWindow.classList.add("active");
+
+			}, 1000);
+
+			// Close cookies button
+			closeCookies.addEventListener("click", () => {
+
+				cookiesWindow.classList.remove("active");
+				overlay.classList.remove("active");
+				document.body.classList.remove("noscroll");
+
+			}, true);
+
+			// Accept cookies button
+			acceptCookies.addEventListener("click", () => {
+
+				localStorage.setItem("Cookies accepted", "true");
+
+				cookiesWindow.classList.remove("active");
+				overlay.classList.remove("active");
+				document.body.classList.remove("noscroll");
+
+			}, true);
+
+		}
+
+	});
+
 })();
+
 
 // ========================== signin.js ==========================
 
 // HTML needed: Overlay + Sign In Modal + Header
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Show/hide modal window ........................................
 
-  // Find overlay
-  const overlay = document.getElementById("overlay");
+	// Show/hide modal window ........................................
 
-  // Find signin form
-  const signinForm = document.getElementById("signinForm");
+	// Find overlay
+	const overlay = document.getElementById("overlay");
 
-  // Find open modal button
-  const openSignin = document.getElementById("openSignin");
+	// Find signin form
+	const signinForm = document.getElementById("signinForm");
 
-  // Find login button
-  const login = document.getElementById("login");
+	// Find open modal button
+	const openSignin = document.getElementById("openSignin");
 
-  // Open signin modal
-  openSignin.addEventListener(
-    "click",
-    () => {
-      overlay.classList.add("active");
-      document.body.classList.add("noscroll");
-      signinForm.classList.add("active");
-    },
-    true
-  );
+	// Find login button
+	const login = document.getElementById("login");
 
-  // Validation inputs and submitting ...............................
+	// Open signin modal
+	openSignin.addEventListener("click", () => {
 
-  const emailField = document.querySelector(
-    "form#signinForm input[type='email']"
-  );
-  const passwordField = document.querySelector(
-    "form#signinForm input[type='password']"
-  );
+		overlay.classList.add("active");
+		document.body.classList.add("noscroll");
+		signinForm.classList.add("active");
 
-  // Close signin modal with submit button if valid
-  login.addEventListener( "click",() => {
-      if ( emailField.validity.valid === true &&
-        passwordField.validity.valid === true) {
-        overlay.classList.remove("active");
-        document.body.classList.remove("noscroll");
-        signinForm.classList.remove("active");
-      }
-    },
-    true
-  );
+	}, true);
 
-  // Close signin modal with click on overlay
-  overlay.addEventListener(
-    "click",
-    () => {
-      overlay.classList.remove("active");
-      document.body.classList.remove("noscroll");
-      signinForm.classList.remove("active");
-    },
-    true
-  );
 
-  // Show/hide password ...................................
-  const showPassword = document.querySelector(
-    "form#signinForm span.showPassword"
-  );
+	// Validation inputs and submitting ...............................
 
-  showPassword.addEventListener(
-    "click",
-    () => {
-      passwordField.type === "password"
-        ? (passwordField.type = "text")
-        : (passwordField.type = "password");
-    },
-    true
-  );
+	const emailField = document.querySelector("form#signinForm input[type='email']");
+	const passwordField = document.querySelector("form#signinForm input[type='password']");
+
+	// Close signin modal with submit button if valid
+	login.addEventListener("click", () => {
+
+		if (emailField.validity.valid === true && passwordField.validity.valid === true) {
+
+			overlay.classList.remove("active");
+			document.body.classList.remove("noscroll");
+			signinForm.classList.remove("active");
+
+		}
+
+	}, true);
+
+	// Close signin modal with Escape key
+	document.addEventListener("keyup", (e) => {
+
+		if (e.key === "Escape") {
+
+			overlay.classList.remove("active");
+			document.body.classList.remove("noscroll");
+			signinForm.classList.remove("active");
+
+		}
+
+	}, true);
+
+	// Close signin modal with click on overlay
+	overlay.addEventListener("click", () => {
+
+		overlay.classList.remove("active");
+		document.body.classList.remove("noscroll");
+		signinForm.classList.remove("active");
+
+	}, true);
+
+
+	// Show/hide password ...................................
+	const showPassword = document.querySelector("form#signinForm span.showPassword");
+
+	showPassword.addEventListener("click", () => {
+
+		passwordField.type === "password" ? passwordField.type = "text" : passwordField.type = "password";
+
+	}, true);
+
 });
 
 // ========================== hamburger.js ==========================
@@ -155,18 +182,15 @@ const hambBtn = document.getElementById("hamburger");
 // Find nav-main
 const navMain = document.querySelector("header nav ul.nav-main");
 
+// Event listener for Hamburger is added below
 
 // ========================== services-expand.js ==========================
 
 // Find Services tab
-const servicesTab = document.querySelector(
-  "header nav ul.nav-main li.menu-open > h2"
-);
+const servicesTab = document.querySelector("header nav ul.nav-main li.menu-open > h2");
 
 // Find its span
-const servicesSpan = document.querySelector(
-  "header nav ul.nav-main li.menu-open > h2 > span.arrow-down"
-);
+const servicesSpan = document.querySelector("header nav ul.nav-main li.menu-open > h2 > span.arrow-down");
 
 // Find Services menu
 const servicesMenu = document.querySelector("header nav ul.nav-main li.menu-open div.menu");
@@ -223,14 +247,17 @@ saleTab.addEventListener("click", () => {
 
 // Event listener: click on Services tab - show/hide Services menu
 servicesTab.addEventListener("click", () => {
-  if (servicesMenu.classList.contains("active") === true) {
-    prodCatMenu.classList.remove("active");
-    prodCatSpan.classList.remove("active");
-    saleMenu.classList.remove("active");
-    saleSpan.classList.remove("active");
-  }
-  servicesMenu.classList.toggle("active");
-  servicesSpan.classList.toggle("active");
+
+	if (servicesMenu.classList.contains("active") === true) {
+		prodCatMenu.classList.remove("active");
+		prodCatSpan.classList.remove("active");
+		saleMenu.classList.remove("active");
+		saleSpan.classList.remove("active");
+	}
+
+	servicesMenu.classList.toggle("active");
+	servicesSpan.classList.toggle("active");
+
 }, true);
 
 // Event listener: click on hamburger - show/hide nav-main
@@ -262,62 +289,50 @@ hambBtn.addEventListener("click", () => {
 
 // ====================== footer-expand.js ======================
 
-// Find all Footer tabs
-const footerTabs = document.querySelectorAll("footer div.wrapper > div > h3");
-
-// Find their spans
-const footerSpans = document.querySelectorAll("footer div.wrapper > div > h3 > span.arrow-down");
-
-// Find all Footer menus
-const footerMenus = [
-	document.querySelector("footer div.wrapper > div > ul.contact-menu"),
-	document.querySelector("footer div.wrapper > div > div.categories-menu"),
-	document.querySelector("footer div.wrapper > div > ul.about-menu"),
-];
-
-// Events listeners: click on tab i - open menu i
 document.addEventListener("DOMContentLoaded", () => {
-  // Find all Footer tabs
-  const footerTabs = document.querySelectorAll("footer div.wrapper > div > h3");
+		// Find all Footer tabs
+	const footerTabs = document.querySelectorAll("footer div.wrapper > div > h3");
 
-  // Find their spans
-  const footerSpans = document.querySelectorAll("footer div.wrapper > div > h3 > span.arrow-down");
+	// Find their spans
+	const footerSpans = document.querySelectorAll("footer div.wrapper > div > h3 > span.arrow-down");
 
-  // Find all Footer menus
-  const footerMenus = [
-    document.querySelector("footer div.wrapper > div > ul.contact-menu"),
-    document.querySelector("footer div.wrapper > div > div.categories-menu"),
-    document.querySelector("footer div.wrapper > div > ul.about-menu"),
-  ];
+	// Find all Footer menus
+	const footerMenus = [
+		document.querySelector("footer div.wrapper > div > ul.contact-menu"),
+		document.querySelector("footer div.wrapper > div > div.categories-menu"),
+		document.querySelector("footer div.wrapper > div > ul.about-menu"),
+	];
 
-  // Events listeners: click on tab i - open menu i
-  for (let i = 0; i < footerTabs.length; i++) {
+	// Events listeners: click on tab i - open menu i
+	for (let i = 0; i < footerTabs.length; i++) {
 
-    footerTabs[i].addEventListener("click", () => {
+		footerTabs[i].addEventListener("click", () => {
 
-      if (footerMenus[i].classList.contains("active") === false) {
-        footerMenus.forEach(footerMenu => {
-          footerMenu.classList.remove("active");
-        });
-        footerSpans.forEach(footerSpan => {
-          footerSpan.classList.remove("active");
-        });
+			if (footerMenus[i].classList.contains("active") === false) {
+				footerMenus.forEach(footerMenu => {
+					footerMenu.classList.remove("active");
+				});
+				footerSpans.forEach(footerSpan => {
+					footerSpan.classList.remove("active");
+				});
 
-        footerMenus[i].classList.add("active");
-        footerSpans[i].classList.add("active");
-      } else {
-        footerMenus.forEach(footerMenu => {
-          footerMenu.classList.remove("active");
-        });
-        footerSpans.forEach(footerSpan => {
-          footerSpan.classList.remove("active");
-        });
-      }
-    }, true);
-  }
+				footerMenus[i].classList.add("active");
+				footerSpans[i].classList.add("active");
+			} else {
+				footerMenus.forEach(footerMenu => {
+					footerMenu.classList.remove("active");
+				});
+				footerSpans.forEach(footerSpan => {
+					footerSpan.classList.remove("active");
+				});
+			}
 
-  // ========================== year.js ==========================
+		}, true);
 
-  // Inject current year to the footer ...............................
-  document.getElementById("year").innerText = new Date().getFullYear();
+	}
+
+	// ========================== year.js ==========================
+
+	// Inject current year to the footer ...............................
+	document.getElementById("year").innerText = new Date().getFullYear();
 });

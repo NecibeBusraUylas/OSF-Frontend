@@ -17,6 +17,39 @@ main {
 
     @import "./layout/breadcrumbs";
 
+    /* Future sliders styles ----------------------------------- */
+    ul.future-dots {
+        display: none;
+        margin-top: to-rem(20px);
+        padding: 1rem;
+
+        > li {
+            display: inline-block;
+            margin: 0 0.5rem;
+            padding: 0.25rem;
+            background-color: #262a32;
+            border-radius: 50%;
+            border: 0.25rem solid transparent;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.5s ease;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &.active {
+                opacity: 1;
+                background-color: white;
+                border: solid 0.25rem #262a32;
+            }
+        }
+
+        @media (max-width: 440px) {
+            display: block;
+        }
+    }
+
     /* Product ----------------------------------------- */
     section.product {
         .wrapper {
@@ -25,6 +58,7 @@ main {
             .sub-wrapper {
                 background-color: #fff;
                 border-radius: $radius;
+                position: relative;
 
                 .overview {
                     display: flex;
@@ -43,6 +77,11 @@ main {
                         top: to-rem(34px);
                         left: to-rem(28px);
                         z-index: 10;
+
+                        @media (max-width: 640px) {
+                            top: 1.5rem;
+                            font-size: to-rem(18px);
+                        }
 
                         path {
                             fill: #84bc22;
@@ -83,12 +122,16 @@ main {
                                 visibility: visible;
                                 z-index: 110;
                                 width: 50%;
-                                top: 50%;
+                                top: 70%;
                                 left: 50%;
                                 transform: translate(-50%, -50%);
 
                                 &:hover {
                                     opacity: 1;
+                                }
+
+                                @media (max-width: 960px) {
+                                    width: 80%;
                                 }
                             }
                         }
@@ -201,23 +244,11 @@ main {
                             text-align: left;
 
                             // Custom number input
-                            > .amountpick button {
+                            > .amountpick {
                                 @extend %custom-number-input;
 
                                 width: 30%;
-                                display: block;
-                                background-color: transparent;
-                                border: none;
-                                color: #84bc22;
-                                font-size: to-rem(16px);
-                                text-align: center;
-                                cursor: pointer;
-                                margin: to-rem(24px) 0;
-                                transition: all 0.5s ease;
-
-                                &:hover {
-                                    text-decoration: underline;
-                                }
+                                margin-right: to-rem(24px);
                             }
 
                             > button {
@@ -447,93 +478,61 @@ main {
             //items
             @import "./layout/items";
 
-            @media (max-width: 850px) {
+            @media (max-width: 1050px) {
                 .items {
                     justify-content: center;
 
                     .item {
-                        width: 46%;
+                        width: 35%;
                         margin: 1.5rem;
                     }
                 }
             }
 
-            @media (max-width: 850px) {
+            @media (max-width: 820px) {
                 .items .item {
                     width: 80%;
                 }
             }
-        }
 
-        @media (max-width: 440px) {
-            .items {
-                min-height: to-rem(420px);
+            @media (max-width: 440px) {
+                .items {
+                    min-height: to-rem(420px);
 
-                .item {
-                    position: absolute;
-                    opacity: 0;
-                    visibility: hidden;
-                    transition: opacity 0.8s ease;
+                    .item {
+                        position: absolute;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: opacity 0.8s ease;
 
-                    &.active {
-                        position: relative;
-                        opacity: 1;
-                        visibility: visible;
+                        &.active {
+                            position: relative;
+                            opacity: 1;
+                            visibility: visible;
+                        }
                     }
                 }
             }
-        }
 
-        ul.future-dots {
-            display: none;
-            margin-top: to-rem(20px);
-            padding: 1rem;
+            // Scroll to top
+            a.toTop {
+                @extend %btn;
 
-            > li {
-                display: inline-block;
-                margin: 0 0.5rem;
-                padding: 0.25rem;
-                background-color: #262a32;
-                border-radius: 50%;
-                border: 0.25rem solid transparent;
-                cursor: pointer;
-                opacity: 0.5;
-                transition: all 0.5s ease;
+                margin-top: 3rem;
+                border-color: #e8e2d6;
+                color: white;
+                background-color: #84bc22;
+                display: none;
 
                 &:hover {
-                    opacity: 1;
-                }
-
-                &.active {
-                    opacity: 1;
                     background-color: white;
-                    border: solid 0.25rem #262a32;
+                    color: #84bc22;
+                    border-color: #84bc22;
                 }
-            }
 
-            @media (max-width: 440px) {
-                display: block;
-            }
-        }
-
-        // Scroll to top
-        a.toTop {
-            @extend %btn;
-
-            margin-top: 3rem;
-            border-color: #e8e2d6;
-            color: white;
-            background-color: #84bc22;
-            display: none;
-
-            &:hover {
-                background-color: white;
-                color: #84bc22;
-                border-color: #84bc22;
-            }
-
-            @media (max-width: 500px) {
-                display: inline-block;
+                @media (max-width: 500px) {
+                    display: inline-block;
+                }
             }
         }
     }

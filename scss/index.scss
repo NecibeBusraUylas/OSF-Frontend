@@ -31,6 +31,7 @@ main {
 
                 @media (max-width: 600px) {
                     width: 100%;
+                    margin-right: 0;
                 }
 
                 .img {
@@ -199,7 +200,7 @@ main {
                 .img {
                     height: to-rem(305px);
                     margin-bottom: to-rem(25px);
-                    padding: to-rem(50px);
+                    padding-top: to-rem(70px);
                     border-radius: $radius;
                     text-align: center;
 
@@ -474,10 +475,6 @@ main {
 
                 @media (max-width: 960px) {
                     width: 80%;
-                }
-
-                span {
-                    color: #ff974e;
                 }
             }
         }

@@ -1,343 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Countdown to the Project Release</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Countdown to the Project Release</title>
 
-	<!-- Link Fontawesome icons -->
-	<script src="https://kit.fontawesome.com/793c03e560.js"></script>
+    <!-- Link Fontawesome icons -->
+    <script src="https://kit.fontawesome.com/793c03e560.js"></script>
 
-	<!-- Link user styles -->
-	<link rel="stylesheet" href="./scss/release.css">
-</head>
-<body>
-	<!-- Overlay -->
-	<div id="overlay"></div>
+    <!-- Link user styles -->
+    <link rel="stylesheet" href="./scss/release.css" />
+  </head>
+  <body>
+    <!-- Overlay -->
+    <div id="overlay"></div>
 
-	<!-- Cookies Modal -->
-	<div id="cookies">
-		<div class="subwrapper">
-			<h6>This website uses cookies</h6>
-			<p>
-				OSF uses its own and third-party cookies for statistical purposes, to know your preferences, for website performance and interaction with social media offering publicity tailored to your interests. If you continue browsing, we consider that you accept its use.<br>
-				You can expand this information consulting our <a href="#">Cookies Policy Page</a>.
-				<button id="accept-cookies" class="btn">Accept</button>
-				<span id="close-cookies"><i class="fas fa-times"></i></span>
-			</p>
-		</div>
-	</div>
+    <!-- Cookies Modal -->
+    <div id="cookies">
+      <div class="subwrapper">
+        <h6>This website uses cookies</h6>
+        <p>
+          OSF uses its own and third-party cookies for statistical purposes, to
+          know your preferences, for website performance and interaction with
+          social media offering publicity tailored to your interests. If you
+          continue browsing, we consider that you accept its use.<br />
+          You can expand this information consulting our
+          <a href="#">Cookies Policy Page</a>.
+          <span id="close-cookies"><i class="fas fa-times"></i></span>
+        </p>
+		<button id="accept-cookies" class="btn">Accept</button>
+      </div>
+    </div>
 
-	<!-- Sign In modal -->
-	<form id="signinForm">
-		<h3>Sign in</h3>
+    <!-- Sign In modal -->
+    <form id="signinForm">
+      <h3>Sign in</h3>
 
-		<label for="email">Email</label>
-		<input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        required
+      />
 
-		<div class="forgot">
-			<label for="password">Password</label>
-			<a href="#">forgot password</a>
-		</div>
-		<div class="password">
-			<span class="showPassword">
-				<i class="far fa-eye"></i>
-			</span>
-			<!-- At least 6 characters length, contain 1 numeric, 1 uppercase letter, 1 special character -->
-			<input type="password" name="password" pattern="(?=.*\d)(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~])(?=.*[A-Z]).{6,}" required>
-		</div>
+      <div class="forgot">
+        <label for="password">Password</label>
+        <a href="#">forgot password</a>
+      </div>
+      <div class="password">
+        <span class="showPassword">
+          <i class="far fa-eye"></i>
+        </span>
+        <!-- At least 6 characters length, contain 1 numeric, 1 uppercase letter, 1 special character -->
+        <input
+          type="password"
+          name="password"
+          pattern="(?=.*\d)(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~])(?=.*[A-Z]).{6,}"
+          required
+        />
+      </div>
 
-		<input type="submit" value="Login" id="login">
-		<a href="#" class="register">I don't have an account</a>
-	</form>
+      <input type="submit" value="Login" id="login" />
+      <a href="#" class="register">I don't have an account</a>
+    </form>
 
-	<!-- Header -->
-	<header>
-		<div class="wrapper">
-				<button id="hamburger">
-					<span class="open active">
-						<i class="fas fa-bars"></i>
-					</span>
-					<span class="close">
-						<i class="fas fa-times"></i>
-					</span>
-				</button>
-			<a href="./index.html" class="logo">
-					<img src="./img/home/logo.png" alt="logo">
-					<div>
-						<h1>OSF</h1>
-						<h2>Academy</h2>
-					</div>
-				</a>
+    <!-- Header -->
+    <header>
+      <div class="wrapper">
+        <button id="hamburger">
+          <span class="open active">
+            <i class="fas fa-bars"></i>
+          </span>
+          <span class="close">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <a href="./index.html" class="logo">
+          <img src="./img/home/logo.png" alt="logo" />
+          <div>
+            <h1>OSF</h1>
+            <h2>Academy</h2>
+          </div>
+        </a>
 
-				<nav>
-					<ul class="nav-main">
-						<li class="menu-open">
-							<h2>Services
-								<span class="arrow-down">&#9660;</span>
-							</h2>
-							<!-- Menu -->
-							<div class="menu">
-								<div class="wrapper">
-									<div class="prod-cat">
-										<h3>Product categories
-											<span class="arrow-down">&#9660;</span>
-										</h3>
-										<div>
-											<ul>
-												<li><a href="./404.html">Accessories</a></li>
-												<li><a href="./404.html">Alcohol</a></li>
-												<li><a href="./404.html">Art</a></li>
-												<li><a href="./404.html">Books</a></li>
-												<li><a href="./404.html">Drink</a></li>
-												<li><a href="./404.html">Electronics</a></li>
-												<li><a href="./404.html">Flowers & Plants</a></li>
-												<li><a href="./404.html">Food</a></li>
-											</ul>
-											<ul>
-												<li><a href="./404.html">Gadgets</a></li>
-												<li><a href="./404.html">Garden</a></li>
-												<li><a href="./404.html">Grocery</a></li>
-												<li><a href="./404.html">Home</a></li>
-												<li><a href="./404.html">Jewerly</a></li>
-												<li><a href="./404.html">Kids & Baby</a></li>
-												<li><a href="./404.html">Men's Fashion</a></li>
-												<li><a href="./404.html">Mobile</a></li>
-											</ul>
-											<ul>
-												<li><a href="./404.html">Motorcycles</a></li>
-												<li><a href="./404.html">Movies</a></li>
-												<li><a href="./404.html">Music</a></li>
-												<li><a href="./404.html">Office</a></li>
-												<li><a href="./404.html">Pets</a></li>
-												<li><a href="./404.html">Romantic</a></li>
-												<li><a href="./404.html">Sport</a></li>
-												<li><a href="./404.html">Toys</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="sale">
-										<h3>Sale
-											<span class="arrow-down">&#9660;</span>
-										</h3>
-										<ul>
-											<li><a href="./404.html">Accessories</a></li>
-											<li><a href="./404.html">Alcohol</a></li>
-											<li><a href="./404.html">Art</a></li>
-											<li><a href="./404.html">Books</a></li>
-											<li><a href="./404.html">Drink</a></li>
-											<li><a href="./404.html">Electronics</a></li>
-											<li><a href="./404.html">Flowers & Plants</a></li>
-											<li><a href="./404.html">Food</a></li>
-										</ul>
-									</div>
-									<img src="img/home/navbanner.png" alt="navbanner">
-								</div>							
-							</div>
-						</li>
-						<li>
-							<h2>Company</h2>
-						</li>
-						<li>
-							<h2>Library</h2>
-						</li>
-						<li>
-							<h2>Contact Us</h2>
-						</li>
-					</ul>
+        <nav>
+          <ul class="nav-main">
+            <li class="menu-open">
+              <h2>
+                Services
+                <span class="arrow-down">&#9660;</span>
+              </h2>
+              <!-- Menu -->
+              <div class="menu">
+                <div class="wrapper">
+                  <div class="prod-cat">
+                    <h3>
+                      Product categories
+                      <span class="arrow-down">&#9660;</span>
+                    </h3>
+                    <div>
+                      <ul>
+                        <li><a href="./404.html">Accessories</a></li>
+                        <li><a href="./404.html">Alcohol</a></li>
+                        <li><a href="./404.html">Art</a></li>
+                        <li><a href="./404.html">Books</a></li>
+                        <li><a href="./404.html">Drink</a></li>
+                        <li><a href="./404.html">Electronics</a></li>
+                        <li><a href="./404.html">Flowers & Plants</a></li>
+                        <li><a href="./404.html">Food</a></li>
+                      </ul>
+                      <ul>
+                        <li><a href="./404.html">Gadgets</a></li>
+                        <li><a href="./404.html">Garden</a></li>
+                        <li><a href="./404.html">Grocery</a></li>
+                        <li><a href="./404.html">Home</a></li>
+                        <li><a href="./404.html">Jewerly</a></li>
+                        <li><a href="./404.html">Kids & Baby</a></li>
+                        <li><a href="./404.html">Men's Fashion</a></li>
+                        <li><a href="./404.html">Mobile</a></li>
+                      </ul>
+                      <ul>
+                        <li><a href="./404.html">Motorcycles</a></li>
+                        <li><a href="./404.html">Movies</a></li>
+                        <li><a href="./404.html">Music</a></li>
+                        <li><a href="./404.html">Office</a></li>
+                        <li><a href="./404.html">Pets</a></li>
+                        <li><a href="./404.html">Romantic</a></li>
+                        <li><a href="./404.html">Sport</a></li>
+                        <li><a href="./404.html">Toys</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="sale">
+                    <h3>
+                      Sale
+                      <span class="arrow-down">&#9660;</span>
+                    </h3>
+                    <ul>
+                      <li><a href="./404.html">Accessories</a></li>
+                      <li><a href="./404.html">Alcohol</a></li>
+                      <li><a href="./404.html">Art</a></li>
+                      <li><a href="./404.html">Books</a></li>
+                      <li><a href="./404.html">Drink</a></li>
+                      <li><a href="./404.html">Electronics</a></li>
+                      <li><a href="./404.html">Flowers & Plants</a></li>
+                      <li><a href="./404.html">Food</a></li>
+                    </ul>
+                  </div>
+                  <img src="img/home/navbanner.png" alt="navbanner" />
+                </div>
+              </div>
+            </li>
+            <li>
+              <h2>Company</h2>
+            </li>
+            <li>
+              <h2>Library</h2>
+            </li>
+            <li>
+              <h2>Contact Us</h2>
+            </li>
+          </ul>
 
-					<ul class="nav-lang">
-						<li class="lang-open">
-							<h2>
-								EN
-								<span class="arrow-down">&#9660;</span>
-							</h2>
-							<div class="lang-menu">
-								<ul>
-									<li>FR</li>
-									<li>UA</li>
-									<li>RU</li>
-									<li>DE</li>
-								</ul>
-							</div>
-						</li>
-						<li class="currency-open">
-							<h2>
-								$ US
-								<span class="arrow-down">&#9660;</span>
-							</h2>
-							<div class="currency-menu">
-								<ul>
-									<li>€ Euro</li>
-									<li>₴ Ukrainian hryvna</li>
-									<li>₽ Russian ruble</li>
-									<li>£ Pounds sterling</li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-						<ul class="nav-manage">
-						<li><button>
-							<i class="fas fa-search"></i>
-						</button></li>
-						<li><button id="openSignin">
-							<i class="far fa-user"></i>
-						</button></li>
-						<li><button id="wishlist">
-							<i class="far fa-heart"></i>
-							<span id="wishlistAmount">0</span>
-						</button></li>
-						<li><a href="./cart.html" id="cart">
-							<i class="fas fa-shopping-bag"></i>
-							<span id="cartAmount">0</span>
-						</a></li>
-					</ul>
-				</nav>
-			</div>
-	</header>
+          <ul class="nav-lang">
+            <li class="lang-open">
+              <h2>
+                EN
+                <span class="arrow-down">&#9660;</span>
+              </h2>
+              <div class="lang-menu">
+                <ul>
+                  <li>FR</li>
+                  <li>UA</li>
+                  <li>RU</li>
+                  <li>DE</li>
+                </ul>
+              </div>
+            </li>
+            <li class="currency-open">
+              <h2>
+                $ US
+                <span class="arrow-down">&#9660;</span>
+              </h2>
+              <div class="currency-menu">
+                <ul>
+                  <li>€ Euro</li>
+                  <li>₴ Ukrainian hryvna</li>
+                  <li>₽ Russian ruble</li>
+                  <li>£ Pounds sterling</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <ul class="nav-manage">
+            <li>
+              <button>
+                <i class="fas fa-search"></i>
+              </button>
+            </li>
+            <li>
+              <button id="openSignin">
+                <i class="far fa-user"></i>
+              </button>
+            </li>
+            <li>
+              <button id="wishlist">
+                <i class="far fa-heart"></i>
+                <span id="wishlistAmount">0</span>
+              </button>
+            </li>
+            <li>
+              <a href="./cart.html" id="cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span id="cartAmount">0</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-	<!-- Main -->
-	<main>
+    <!-- Main -->
+    <main>
+      <!-- Info -->
+      <section class="countdown">
+        <div class="wrapper">
+          <h3>We Will Release OSF Academy</h3>
+          <p>
+            We are working hard and estimated release time products below. Sed
+            ac tristique nunc, ut gravida nunc. Nulla consequat erat non lectus
+            imperdiet.
+          </p>
+          <div class="release">
+            <div>
+              <div>
+                <span id="months">00</span>
+              </div>
+              <h5>Months</h5>
+            </div>
+            <div>
+              <div>
+                <span id="days">24</span>
+              </div>
+              <h5>Days</h5>
+            </div>
+            <div>
+              <div>
+                <span id="hours">19</span>
+              </div>
+              <h5>Hours</h5>
+            </div>
+            <div>
+              <div>
+                <span id="minutes">37</span>
+              </div>
+              <h5>Minutes</h5>
+            </div>
+            <div>
+              <div>
+                <span id="seconds">56</span>
+              </div>
+              <h5>Seconds</h5>
+            </div>
+          </div>
+          <form class="mailing">
+            <input
+              type="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              placeholder="Enter your email to receive the latest announcements"
+              id="email"
+              required
+            />
+            <input type="submit" value="" id="subscribe" />
+            <label for="subscribe" id="forSubscribe">
+              <i class="fas fa-chevron-circle-right"></i>
+            </label>
+          </form>
+        </div>
+      </section>
+    </main>
 
-		<!-- Info -->
-		<section class="countdown">
-			<div class="wrapper">
-				<h3>We Will Release OSF Academy</h3>
-				<p>We are working hard and estimated release time products below. Sed ac tristique nunc, ut gravida nunc. Nulla consequat erat non lectus imperdiet.</p>
-				<div class="release">
-					<div>
-						<span id="months">00</span>
-						<div>
-							<span id="months">00</span>
-						</div>
-						<h5>Months</h5>
-					</div>
-					<div>
-						<span id="days">24</span>
-						<div>
-							<span id="days">00</span>
-						</div>
-						<h5>Days</h5>
-					</div>
-					<div>
-						<span id="hours">19</span>
-						<div>
-							<span id="hours">00</span>
-						</div>
-						<h5>Hours</h5>
-					</div>
-					<div>
-						<span id="minutes">37</span>
-						<div>
-							<span id="minutes">00</span>
-						</div>
-						<h5>Minutes</h5>
-					</div>
-					<div>
-						<span id="seconds">56</span>
-						<div>
-							<span id="seconds">00</span>
-						</div>
-						<h5>Seconds</h5>
-					</div>
-				</div>
-				<form class="mailing">
-					<input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter your email to receive the latest announcements" id="email" required>
-					<input type="submit" value="" id="subscribe">
-					<label for="subscribe" id="forSubscribe">
-						<i class="fas fa-chevron-circle-right"></i>
-					</label>
-				</form>
-			</div>
-		</section>
+    <!-- Footer -->
+    <footer>
+      <div class="wrapper">
+        <div class="contact">
+          <span
+            >© Copyright 2022.<br />
+            All Rights Reserved.<br />
+            <a href="./release.html">Release Date</a>
+          </span>
+          <h3>
+            Contact
+            <span class="arrow-down">&#9660;</span>
+          </h3>
+          <ul class="contact-menu">
+            <li>
+              Headquarters:<br />
+              5600, Blvd. des Galeries, Bur 530 Québec, Québec G2K 2H6
+            </li>
+            <li>
+              <a href="mailto:contact@osf-global.com">contact@osf-global.com</a>
+            </li>
+            <li><a href="tel:+1-888-548-4344">+1 (888) 548-4344</a></li>
+          </ul>
+        </div>
+        <div class="categories">
+          <h3>
+            Categories
+            <span class="arrow-down">&#9660;</span>
+          </h3>
+          <div class="categories-menu">
+            <ul>
+              <li><a href="./404.html">Alcohol</a></li>
+              <li><a href="./404.html">Art</a></li>
+              <li><a href="./404.html">Books</a></li>
+              <li><a href="./404.html">Drink</a></li>
+              <li><a href="./404.html">Electronics</a></li>
+            </ul>
+            <ul>
+              <li><a href="./404.html">Home</a></li>
+              <li><a href="./404.html">Jewerly</a></li>
+              <li><a href="./404.html">Kids & Baby</a></li>
+              <li><a href="./404.html">Men's Fashion</a></li>
+              <li><a href="./404.html">Mobile</a></li>
+              <li><a href="./404.html">Motorcycles</a></li>
+              <li><a href="./404.html">Movies</a></li>
+              <li><a href="./404.html">Music</a></li>
+            </ul>
+            <ul>
+              <li><a href="./404.html">Sport</a></li>
+              <li><a href="./404.html">Toys</a></li>
+              <li><a href="./404.html">Travel</a></li>
+              <li><a href="./404.html">Women's Fashion</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="about">
+          <h3>
+            About
+            <span class="arrow-down">&#9660;</span>
+          </h3>
+          <ul class="about-menu">
+            <li><a href="./404.html">About Us</a></li>
+            <li><a href="./404.html">Delivery</a></li>
+            <li><a href="./404.html">Testimonials</a></li>
+            <li><a href="./404.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="social">
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/OSFGlobalServices/">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.google.com">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/osfglobal">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.pinterest.ca/osfglobal/">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
 
-	</main>
+    <!-- Link Firebase -->
+    <script src="js/firebase/firebase-app.js"></script>
 
-	<!-- Footer -->
-	<footer>
-		<div class="wrapper">
-				<div class="contact">
-				<span>© Copyright <span id="year"></span>.<br>
-					All Rights Reserved.</span>
-					<h3>Contact
-						<span class="arrow-down">&#9660;</span>
-					</h3>
-					<ul class="contact-menu">
-					<li>Headquarters:<br>
-						5600, Blvd. des Galeries, Bur 530 Québec, Québec G2K 2H6</li>
-					<li><a href="mailto:contact@osf-global.com">contact@osf-global.com</a></li>
-					<li><a href="tel:+1-888-548-4344">+1 (888) 548-4344</a></li>
-				</ul>
-			</div>
-			<div class="categories">
-				<div class="categories">
-					<h3>Categories
-						<span class="arrow-down">&#9660;</span>
-					</h3>
-					<div class="categories-menu">
-						<ul>
-							<li><a href="./404.html">Alcohol</a></li>
-							<li><a href="./404.html">Art</a></li>
-							<li><a href="./404.html">Books</a></li>
-							<li><a href="./404.html">Drink</a></li>
-							<li><a href="./404.html">Electronics</a></li>
-						</ul>
-						<ul>
-							<li><a href="./404.html">Home</a></li>
-							<li><a href="./404.html">Jewerly</a></li>
-							<li><a href="./404.html">Kids & Baby</a></li>
-							<li><a href="./404.html">Men's Fashion</a></li>
-							<li><a href="./404.html">Mobile</a></li>
-							<li><a href="./404.html">Motorcycles</a></li>
-							<li><a href="./404.html">Movies</a></li>
-							<li><a href="./404.html">Music</a></li>
-						</ul>
-						<ul>
-							<li><a href="./404.html">Sport</a></li>
-							<li><a href="./404.html">Toys</a></li>
-							<li><a href="./404.html">Travel</a></li>
-							<li><a href="./404.html">Women's Fashion</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="about">
-					<<h3>About
-						<span class="arrow-down">&#9660;</span>
-					</h3>
-					<ul class="about-menu">
-					<li><a href="./404.html">About Us</a></li>
-						<li><a href="./404.html">Delivery</a></li>
-						<li><a href="./404.html">Testimonials</a></li>
-						<li><a href="./404.html">Contact</a></li>
-				</ul>
-			</div>
-			<div class="social">
-				<ul>
-					<li><a href="https://www.facebook.com/OSFGlobalServices/">
-						<i class="fab fa-facebook-f"></i>
-					</a></li>
-					<li><a href="https://www.google.com">
-						<i class="fab fa-google-plus-g"></i>
-					</a></li>
-					<li><a href="https://twitter.com/osfglobal">
-						<i class="fab fa-twitter"></i>
-					</a></li>
-					<li><a href="https://www.pinterest.ca/osfglobal/">
-						<i class="fab fa-pinterest-p"></i>
-					</a></li>
-				</ul>
-			</div>
-		</div>
-	</footer>
+    <!-- Import basic functionality -->
+    <script src="js/_basicF.js"></script>
 
-	<!-- Link Firebase -->
-	<script src="js/firebase/firebase-app.js"></script>
-
-	<!-- Import basic functionality -->
-	<script src="js/_basicF.js"></script>
-	
-	<!-- Script test -->
-	<script src="./js/tests/firebase.js"></script>
-</body>
+    <!-- Script test -->
+    <script src="./js/tests/firebase.js"></script>
+  </body>
 </html>

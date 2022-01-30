@@ -5,7 +5,7 @@ header {
     right: 0;
     z-index: 60;
     background-color: #fff;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 0.15px solid #ccc;
 
     > .wrapper {
         display: flex;
@@ -19,7 +19,7 @@ header {
         }
 
         @media (max-width: 850px) {
-            padding: 1rem;
+            padding: 1rem 0;
             flex-direction: row;
             justify-content: flex-start;
         }
@@ -227,7 +227,11 @@ header {
                         > h2 {
                             cursor: pointer;
 
-                            &:hover, > span:hover {
+                            &:hover {
+                                color: #84bc22;
+                            }
+
+                            > span:hover {
                                 color: #84bc22;
                             }
                         }
@@ -251,7 +255,6 @@ header {
                             // Hover effects
                             position: absolute;
                             opacity: 0;
-                            visibility: hidden;
                             left: 0;
                             right: 0;
                             top: to-rem(83px);
@@ -421,179 +424,179 @@ header {
                                         padding: 0;
                                     }
                                 }
-
-                                img {
-                                    width: 30%;
-                                    height: 100%;
-                                    border-radius: $radius;
-
-                                    @media (max-width: 850px) {
-                                        align-self: center;
-                                        width: 60%;
-                                    }
-
-                                    @media (max-width: 480px) {
-                                        align-self: center;
-                                        width: 80%;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            ul.nav-lang {
-                margin-right: to-rem(50px);
-
-                @media (max-width: 1280px) {
-                    margin-right: 0;
-                }
-
-                @media (max-width: 850px) {
-                    display: none;
-                }
-
-                * {
-                    color: #45413e;
-                }
-
-                > li {
-                    border-bottom: 5px solid transparent;
-                    color: rgba(#45413e, 0.5);
-
-                    &:hover {
-                        * {
-                            color: #fff;
-                        }
-
-                        color: #fff;
-                        background-color: #262a32;
-                        border-bottom: 5px solid #84bc22;
-                    }
-
-                    &.lang-open, &.currency-open {
-                        z-index: 20;
-
-                        .lang-menu, .currency-menu {
-                            background-color: #262a32;
-
-                            // Hover effects
-                            position: absolute;
-                            opacity: 0;
-                            visibility: hidden;
-                            top: to-rem(83px);
-                            z-index: 10;
-                            transition: all 0.4s ease;
-
-                            @media (max-width: 1010px) {
-                                top: 83px + 78px;
                             }
 
-                            li {
-                                padding: to-rem(6px) 0;
-                                text-transform: capitalize;
-                                transition: all 0.2s ease;
-                                cursor: pointer;
-
-                                &:hover {
-                                    opacity: 0.6;
-                                }
-                            }
-                        }
-
-                        .lang-menu {
-                            width: to-rem(78px);
-                            transform: translateX(-(to-rem(18px)));
-                        }
-
-                        .currency-menu {
-                            width: to-rem(130px);
-                            transform: translateX(-30%);
-                        }
-                    }
-
-                    &.lang-open:hover {
-                        .lang-menu {
-                            opacity: 1;
-                            visibility: visible;
-                        }
-                    }
-
-                    &.currency-open:hover {
-                        .currency-menu {
-                            opacity: 1;
-                            visibility: visible;
-                        }
-                    }
-                }
-            }
-
-            ul.nav-manage {
-                @media (max-width: 850px) {
-                    position: fixed;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    z-index: 20;
-                    justify-content: center;
-                    background-color: #262a32;
-                }
-
-                > li {
-                    @media (max-width: 850px) {
-                        padding: 0;
-                    }
-
-                    button, a {
-                        background-color: transparent;
-                        border: none;
-                        position: relative;
-                        cursor: pointer;
-
-                        @media (max-width: 850px) {
-                            padding: to-rem(20px);
-                        }
-
-                        svg {
-                            color: #45413e;
-                            opacity: 0.5;
-                            font-size: 1.7rem;
-
-                            @media (max-width: 850px) {
-                                color: white;
-                            }
-
-                            path {
-                                transition: all 0.3s ease;
-                            }
-
-                            &:hover {
-                                path {
-                                    color: #84bc22;
-                                }
-                            }
-                        }
-
-                        &#wishlist, &#cart {
-                            > span {
-                                position: absolute;
-                                display: inline-block;
-                                top: -40%;
-                                right: -65%;
-                                font-size: 0.7rem;
-                                color: #84bc22;
-                                background-color: white;
-                                border: 0.15rem solid #84bc22;
-                                padding: to-rem(3px) to-rem(6px);
-                                border-radius: 50%;
-                                z-index: 15;
+                            img {
+                                width: 30%;
+                                height: 100%;
+                                border-radius: $radius;
 
                                 @media (max-width: 850px) {
-                                    top: 15%;
-									right: 15%;
-                                    background-color: transparent;
+                                    align-self: center;
+                                    width: 60%;
                                 }
+
+                                @media (max-width: 480px) {
+                                    align-self: center;
+                                    width: 80%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        ul.nav-lang {
+            margin-right: to-rem(50px);
+
+            @media (max-width: 1280px) {
+                margin-right: 0;
+            }
+
+            @media (max-width: 850px) {
+                display: none;
+            }
+
+            * {
+                color: #45413e;
+            }
+
+            > li {
+                border-bottom: 5px solid transparent;
+                color: rgba(#45413e, 0.5);
+
+                &:hover {
+                    * {
+                        color: #fff;
+                    }
+
+                    color: #fff;
+                    background-color: #262a32;
+                    border-bottom: 5px solid #84bc22;
+                }
+
+                &.lang-open, &.currency-open {
+                    z-index: 20;
+
+                    .lang-menu, .currency-menu {
+                        background-color: #262a32;
+
+                        // Hover effects
+                        position: absolute;
+                        opacity: 0;
+                        visibility: hidden;
+                        top: to-rem(83px);
+                        z-index: 10;
+                        transition: all 0.4s ease;
+
+                        @media (max-width: 1010px) {
+                            top: 83px + 78px;
+                        }
+
+                        li {
+                            padding: to-rem(6px) 0;
+                            text-transform: capitalize;
+                            transition: all 0.2s ease;
+                            cursor: pointer;
+
+                            &:hover {
+                                opacity: 0.6;
+                            }
+                        }
+                    }
+
+                    .lang-menu {
+                        width: to-rem(78px);
+                        transform: translateX(-(to-rem(18px)));
+                    }
+
+                    .currency-menu {
+                        width: to-rem(130px);
+                        transform: translateX(-30%);
+                    }
+                }
+
+                &.lang-open:hover {
+                    .lang-menu {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+
+                &.currency-open:hover {
+                    .currency-menu {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+
+        ul.nav-manage {
+            @media (max-width: 850px) {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 20;
+                justify-content: center;
+                background-color: #262a32;
+            }
+
+            > li {
+                @media (max-width: 850px) {
+                    padding: 0;
+                }
+
+                button, a {
+                    background-color: transparent;
+                    border: none;
+                    position: relative;
+                    cursor: pointer;
+
+                    @media (max-width: 850px) {
+                        padding: to-rem(20px);
+                    }
+
+                    svg {
+                        color: #45413e;
+                        opacity: 0.5;
+                        font-size: 1.7rem;
+
+                        @media (max-width: 850px) {
+                            color: white;
+                        }
+
+                        path {
+                            transition: all 0.3s ease;
+                        }
+
+                        &:hover {
+                            path {
+                                color: #84bc22;
+                            }
+                        }
+                    }
+
+                    &#wishlist, &#cart {
+                        > span {
+                            position: absolute;
+                            display: inline-block;
+                            top: -40%;
+                            right: -65%;
+                            font-size: 0.7rem;
+                            color: #84bc22;
+                            background-color: white;
+                            border: 0.15rem solid #84bc22;
+                            padding: to-rem(3px) to-rem(6px);
+                            border-radius: 50%;
+                            z-index: 15;
+
+                            @media (max-width: 850px) {
+                                top: 15%;
+                                right: 15%;
+                                background-color: transparent;
                             }
                         }
                     }

@@ -6,9 +6,6 @@
 html {
     font-size: 14px;
     scroll-behavior: smooth;
-    @media (min-width: 1280px) {
-        font-size: 14 / 1280 * 100vw;
-    }
 }
 
 body {
@@ -41,12 +38,12 @@ main {
 }
 
 .wrapper {
-    width: 91.4%;
+    width:1280px ;
     margin: 0 auto;
     text-align: center;
 
     @media (max-width: 1280px) {
-        width: 95%;
+        width: 96%;
     }
 }
 
@@ -60,7 +57,7 @@ a, button, input[type="submit"] {
 }
 
 // for background images
-%img {
+.img {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -68,10 +65,6 @@ a, button, input[type="submit"] {
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
-}
-
-.img {
-    @extend %img;
 }
 
 %btn {
@@ -122,7 +115,6 @@ a, button, input[type="submit"] {
 // HTML: div => button.minus + input:number + button.plus
 %custom-number-input {
     display: inline-block;
-    margin-right: to-rem(24px);
     position: relative;
 
     > input[type="number"] {
@@ -232,7 +224,7 @@ a, button, input[type="submit"] {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 50;
+    z-index: 100;
     overflow: hidden;
     background-color: #000;
     opacity: 0;
@@ -248,8 +240,8 @@ a, button, input[type="submit"] {
 
 #signinForm {
     position: absolute;
-    width: 40%;
-    top: 50%;
+    width: 30%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 200;
@@ -266,19 +258,20 @@ a, button, input[type="submit"] {
         opacity: 1;
         visibility: visible;
     }
-    @media (max-width: 1280px){
+
+    @media (max-width: 1280px) {
         width: 50%;
     }
-		
-	@media (max-width: 960px){
+
+    @media (max-width: 960px) {
         width: 60%;
     }
-		
-	@media (max-width: 640px){
+
+    @media (max-width: 640px) {
         width: 80%;
-		padding: to-rem(20px);
+        padding: to-rem(20px);
     }
-		
+
     &:after {
         content: "";
         display: table;
@@ -381,6 +374,101 @@ a, button, input[type="submit"] {
             color: #84bc22;
             border-color: #84bc22;
             background-color: transparent;
+        }
+    }
+}
+
+div#cookies {
+    position: absolute;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    background-color: white;
+    padding: to-rem(25px);
+    opacity: 0;
+    visibility: initial;
+    transition: all 0.4s ease;
+    cursor: initial;
+    border-radius: $radius;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    div.subwrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+
+        @media (max-width: 920px) {
+            align-items: center;
+        }
+
+        h6, a {
+            color: #84bc22;
+        }
+
+        h6 {
+            margin-bottom: to-rem(16px);
+            font-size: to-rem(16px);
+            line-height: 1.5;
+        }
+
+        p {
+            display: inline-block;
+            width: 80%;
+            color: #45413e;
+            font-size: 1rem;
+            line-height: 1.71;
+
+            @media (max-width: 920px) {
+                width: 100%;
+            }
+        }
+
+        button#accept-cookies {
+            min-width: 20%;
+            align-self: flex-end;
+
+            @extend %btn;
+
+            padding: to-rem(9px) to-rem(46px);
+            border-color: transparent;
+            color: white;
+            background-color: #84bc22;
+
+            &:hover {
+                color: #84bc22;
+                border-color: #84bc22;
+                background-color: transparent;
+            }
+
+            @media (max-width: 920px) {
+                align-self: center;
+                margin-top: 1rem;
+            }
+        }
+
+        span#close-cookies {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            svg {
+                font-size: 1.5rem;
+            }
+
+            &:hover {
+                svg path {
+                    fill: #84bc22;
+                }
+            }
         }
     }
 }

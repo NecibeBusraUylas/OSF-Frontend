@@ -14,12 +14,6 @@ html {
   scroll-behavior: smooth;
 }
 
-@media (min-width: 1280px) {
-  html {
-    font-size: 1.09375vw;
-  }
-}
-
 body {
   position: relative;
 }
@@ -56,14 +50,14 @@ main {
 }
 
 .wrapper {
-  width: 91.4%;
+  width: 1280px;
   margin: 0 auto;
   text-align: center;
 }
 
 @media (max-width: 1280px) {
   .wrapper {
-    width: 95%;
+    width: 96%;
   }
 }
 
@@ -87,7 +81,7 @@ a, button, input[type="submit"] {
   background-color: transparent;
 }
 
-#signinForm input#login[type="submit"] {
+#signinForm input#login[type="submit"], div#cookies div.subwrapper button#accept-cookies {
   text-transform: uppercase;
   font-size: to-rem(16px);
   padding: to-rem(8px) to-rem(20px);
@@ -103,7 +97,7 @@ a, button, input[type="submit"] {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 50;
+  z-index: 100;
   overflow: hidden;
   background-color: #000;
   opacity: 0;
@@ -119,8 +113,8 @@ a, button, input[type="submit"] {
 
 #signinForm {
   position: absolute;
-  width: 40%;
-  top: 50%;
+  width: 30%;
+  top: 55%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -263,6 +257,117 @@ a, button, input[type="submit"] {
   background-color: transparent;
 }
 
+div#cookies {
+  position: absolute;
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 200;
+  background-color: white;
+  padding: 1.78571rem;
+  opacity: 0;
+  visibility: initial;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  cursor: initial;
+  border-radius: 10px;
+}
+
+div#cookies.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+div#cookies div.subwrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  position: relative;
+}
+
+@media (max-width: 920px) {
+  div#cookies div.subwrapper {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+div#cookies div.subwrapper h6, div#cookies div.subwrapper a {
+  color: #84bc22;
+}
+
+div#cookies div.subwrapper h6 {
+  margin-bottom: 1.14286rem;
+  font-size: 1.14286rem;
+  line-height: 1.5;
+}
+
+div#cookies div.subwrapper p {
+  display: inline-block;
+  width: 80%;
+  color: #45413e;
+  font-size: 1rem;
+  line-height: 1.71;
+}
+
+@media (max-width: 920px) {
+  div#cookies div.subwrapper p {
+    width: 100%;
+  }
+}
+
+div#cookies div.subwrapper button#accept-cookies {
+  min-width: 20%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding: 0.64286rem 3.28571rem;
+  border-color: transparent;
+  color: white;
+  background-color: #84bc22;
+}
+
+div#cookies div.subwrapper button#accept-cookies:hover {
+  color: #84bc22;
+  border-color: #84bc22;
+  background-color: transparent;
+}
+
+@media (max-width: 920px) {
+  div#cookies div.subwrapper button#accept-cookies {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin-top: 1rem;
+  }
+}
+
+div#cookies div.subwrapper span#close-cookies {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+div#cookies div.subwrapper span#close-cookies svg {
+  font-size: 1.5rem;
+}
+
+div#cookies div.subwrapper span#close-cookies:hover svg path {
+  fill: #84bc22;
+}
+
 /* Header ------------------------------------------------ */
 header {
   position: fixed;
@@ -271,7 +376,7 @@ header {
   right: 0;
   z-index: 60;
   background-color: #fff;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 0.15px solid #ccc;
 }
 
 header > .wrapper {
@@ -301,7 +406,7 @@ header > .wrapper {
 
 @media (max-width: 850px) {
   header > .wrapper {
-    padding: 1rem;
+    padding: 1rem 0;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -567,7 +672,10 @@ header > .wrapper nav ul.nav-main > li {
   header > .wrapper nav ul.nav-main > li > h2 {
     cursor: pointer;
   }
-  header > .wrapper nav ul.nav-main > li > h2:hover, header > .wrapper nav ul.nav-main > li > h2 > span:hover {
+  header > .wrapper nav ul.nav-main > li > h2:hover {
+    color: #84bc22;
+  }
+  header > .wrapper nav ul.nav-main > li > h2 > span:hover {
     color: #84bc22;
   }
 }
@@ -587,7 +695,6 @@ header > .wrapper nav ul.nav-main > li.menu-open .menu {
   background-color: #262a32;
   position: absolute;
   opacity: 0;
-  visibility: hidden;
   left: 0;
   right: 0;
   top: 5.92857rem;
@@ -811,14 +918,14 @@ header > .wrapper nav ul.nav-main > li.menu-open .menu .sale {
   }
 }
 
-header > .wrapper nav ul.nav-main > li.menu-open .menu .sale img {
+header > .wrapper nav ul.nav-main > li.menu-open .menu img {
   width: 30%;
   height: 100%;
   border-radius: 10px;
 }
 
 @media (max-width: 850px) {
-  header > .wrapper nav ul.nav-main > li.menu-open .menu .sale img {
+  header > .wrapper nav ul.nav-main > li.menu-open .menu img {
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
@@ -827,7 +934,7 @@ header > .wrapper nav ul.nav-main > li.menu-open .menu .sale img {
 }
 
 @media (max-width: 480px) {
-  header > .wrapper nav ul.nav-main > li.menu-open .menu .sale img {
+  header > .wrapper nav ul.nav-main > li.menu-open .menu img {
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
@@ -835,46 +942,46 @@ header > .wrapper nav ul.nav-main > li.menu-open .menu .sale img {
   }
 }
 
-header > .wrapper nav ul.nav-lang {
+header > .wrapper ul.nav-lang {
   margin-right: 3.57143rem;
 }
 
 @media (max-width: 1280px) {
-  header > .wrapper nav ul.nav-lang {
+  header > .wrapper ul.nav-lang {
     margin-right: 0;
   }
 }
 
 @media (max-width: 850px) {
-  header > .wrapper nav ul.nav-lang {
+  header > .wrapper ul.nav-lang {
     display: none;
   }
 }
 
-header > .wrapper nav ul.nav-lang * {
+header > .wrapper ul.nav-lang * {
   color: #45413e;
 }
 
-header > .wrapper nav ul.nav-lang > li {
+header > .wrapper ul.nav-lang > li {
   border-bottom: 5px solid transparent;
   color: rgba(69, 65, 62, 0.5);
 }
 
-header > .wrapper nav ul.nav-lang > li:hover {
+header > .wrapper ul.nav-lang > li:hover {
   color: #fff;
   background-color: #262a32;
   border-bottom: 5px solid #84bc22;
 }
 
-header > .wrapper nav ul.nav-lang > li:hover * {
+header > .wrapper ul.nav-lang > li:hover * {
   color: #fff;
 }
 
-header > .wrapper nav ul.nav-lang > li.lang-open, header > .wrapper nav ul.nav-lang > li.currency-open {
+header > .wrapper ul.nav-lang > li.lang-open, header > .wrapper ul.nav-lang > li.currency-open {
   z-index: 20;
 }
 
-header > .wrapper nav ul.nav-lang > li.lang-open .lang-menu, header > .wrapper nav ul.nav-lang > li.lang-open .currency-menu, header > .wrapper nav ul.nav-lang > li.currency-open .lang-menu, header > .wrapper nav ul.nav-lang > li.currency-open .currency-menu {
+header > .wrapper ul.nav-lang > li.lang-open .lang-menu, header > .wrapper ul.nav-lang > li.lang-open .currency-menu, header > .wrapper ul.nav-lang > li.currency-open .lang-menu, header > .wrapper ul.nav-lang > li.currency-open .currency-menu {
   background-color: #262a32;
   position: absolute;
   opacity: 0;
@@ -886,12 +993,12 @@ header > .wrapper nav ul.nav-lang > li.lang-open .lang-menu, header > .wrapper n
 }
 
 @media (max-width: 1010px) {
-  header > .wrapper nav ul.nav-lang > li.lang-open .lang-menu, header > .wrapper nav ul.nav-lang > li.lang-open .currency-menu, header > .wrapper nav ul.nav-lang > li.currency-open .lang-menu, header > .wrapper nav ul.nav-lang > li.currency-open .currency-menu {
+  header > .wrapper ul.nav-lang > li.lang-open .lang-menu, header > .wrapper ul.nav-lang > li.lang-open .currency-menu, header > .wrapper ul.nav-lang > li.currency-open .lang-menu, header > .wrapper ul.nav-lang > li.currency-open .currency-menu {
     top: 161px;
   }
 }
 
-header > .wrapper nav ul.nav-lang > li.lang-open .lang-menu li, header > .wrapper nav ul.nav-lang > li.lang-open .currency-menu li, header > .wrapper nav ul.nav-lang > li.currency-open .lang-menu li, header > .wrapper nav ul.nav-lang > li.currency-open .currency-menu li {
+header > .wrapper ul.nav-lang > li.lang-open .lang-menu li, header > .wrapper ul.nav-lang > li.lang-open .currency-menu li, header > .wrapper ul.nav-lang > li.currency-open .lang-menu li, header > .wrapper ul.nav-lang > li.currency-open .currency-menu li {
   padding: 0.42857rem 0;
   text-transform: capitalize;
   -webkit-transition: all 0.2s ease;
@@ -899,34 +1006,34 @@ header > .wrapper nav ul.nav-lang > li.lang-open .lang-menu li, header > .wrappe
   cursor: pointer;
 }
 
-header > .wrapper nav ul.nav-lang > li.lang-open .lang-menu li:hover, header > .wrapper nav ul.nav-lang > li.lang-open .currency-menu li:hover, header > .wrapper nav ul.nav-lang > li.currency-open .lang-menu li:hover, header > .wrapper nav ul.nav-lang > li.currency-open .currency-menu li:hover {
+header > .wrapper ul.nav-lang > li.lang-open .lang-menu li:hover, header > .wrapper ul.nav-lang > li.lang-open .currency-menu li:hover, header > .wrapper ul.nav-lang > li.currency-open .lang-menu li:hover, header > .wrapper ul.nav-lang > li.currency-open .currency-menu li:hover {
   opacity: 0.6;
 }
 
-header > .wrapper nav ul.nav-lang > li.lang-open .lang-menu, header > .wrapper nav ul.nav-lang > li.currency-open .lang-menu {
+header > .wrapper ul.nav-lang > li.lang-open .lang-menu, header > .wrapper ul.nav-lang > li.currency-open .lang-menu {
   width: 5.57143rem;
   -webkit-transform: translateX(-1.28571rem);
           transform: translateX(-1.28571rem);
 }
 
-header > .wrapper nav ul.nav-lang > li.lang-open .currency-menu, header > .wrapper nav ul.nav-lang > li.currency-open .currency-menu {
+header > .wrapper ul.nav-lang > li.lang-open .currency-menu, header > .wrapper ul.nav-lang > li.currency-open .currency-menu {
   width: 9.28571rem;
   -webkit-transform: translateX(-30%);
           transform: translateX(-30%);
 }
 
-header > .wrapper nav ul.nav-lang > li.lang-open:hover .lang-menu {
+header > .wrapper ul.nav-lang > li.lang-open:hover .lang-menu {
   opacity: 1;
   visibility: visible;
 }
 
-header > .wrapper nav ul.nav-lang > li.currency-open:hover .currency-menu {
+header > .wrapper ul.nav-lang > li.currency-open:hover .currency-menu {
   opacity: 1;
   visibility: visible;
 }
 
 @media (max-width: 850px) {
-  header > .wrapper nav ul.nav-manage {
+  header > .wrapper ul.nav-manage {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -940,12 +1047,12 @@ header > .wrapper nav ul.nav-lang > li.currency-open:hover .currency-menu {
 }
 
 @media (max-width: 850px) {
-  header > .wrapper nav ul.nav-manage > li {
+  header > .wrapper ul.nav-manage > li {
     padding: 0;
   }
 }
 
-header > .wrapper nav ul.nav-manage > li button, header > .wrapper nav ul.nav-manage > li a {
+header > .wrapper ul.nav-manage > li button, header > .wrapper ul.nav-manage > li a {
   background-color: transparent;
   border: none;
   position: relative;
@@ -953,33 +1060,33 @@ header > .wrapper nav ul.nav-manage > li button, header > .wrapper nav ul.nav-ma
 }
 
 @media (max-width: 850px) {
-  header > .wrapper nav ul.nav-manage > li button, header > .wrapper nav ul.nav-manage > li a {
+  header > .wrapper ul.nav-manage > li button, header > .wrapper ul.nav-manage > li a {
     padding: 1.42857rem;
   }
 }
 
-header > .wrapper nav ul.nav-manage > li button svg, header > .wrapper nav ul.nav-manage > li a svg {
+header > .wrapper ul.nav-manage > li button svg, header > .wrapper ul.nav-manage > li a svg {
   color: #45413e;
   opacity: 0.5;
   font-size: 1.7rem;
 }
 
 @media (max-width: 850px) {
-  header > .wrapper nav ul.nav-manage > li button svg, header > .wrapper nav ul.nav-manage > li a svg {
+  header > .wrapper ul.nav-manage > li button svg, header > .wrapper ul.nav-manage > li a svg {
     color: white;
   }
 }
 
-header > .wrapper nav ul.nav-manage > li button svg path, header > .wrapper nav ul.nav-manage > li a svg path {
+header > .wrapper ul.nav-manage > li button svg path, header > .wrapper ul.nav-manage > li a svg path {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
-header > .wrapper nav ul.nav-manage > li button svg:hover path, header > .wrapper nav ul.nav-manage > li a svg:hover path {
+header > .wrapper ul.nav-manage > li button svg:hover path, header > .wrapper ul.nav-manage > li a svg:hover path {
   color: #84bc22;
 }
 
-header > .wrapper nav ul.nav-manage > li button#wishlist > span, header > .wrapper nav ul.nav-manage > li button#cart > span, header > .wrapper nav ul.nav-manage > li a#wishlist > span, header > .wrapper nav ul.nav-manage > li a#cart > span {
+header > .wrapper ul.nav-manage > li button#wishlist > span, header > .wrapper ul.nav-manage > li button#cart > span, header > .wrapper ul.nav-manage > li a#wishlist > span, header > .wrapper ul.nav-manage > li a#cart > span {
   position: absolute;
   display: inline-block;
   top: -40%;
@@ -994,7 +1101,7 @@ header > .wrapper nav ul.nav-manage > li button#wishlist > span, header > .wrapp
 }
 
 @media (max-width: 850px) {
-  header > .wrapper nav ul.nav-manage > li button#wishlist > span, header > .wrapper nav ul.nav-manage > li button#cart > span, header > .wrapper nav ul.nav-manage > li a#wishlist > span, header > .wrapper nav ul.nav-manage > li a#cart > span {
+  header > .wrapper ul.nav-manage > li button#wishlist > span, header > .wrapper ul.nav-manage > li button#cart > span, header > .wrapper ul.nav-manage > li a#wishlist > span, header > .wrapper ul.nav-manage > li a#cart > span {
     top: 15%;
     right: 15%;
     background-color: transparent;
@@ -1061,13 +1168,13 @@ main section.breadcrumbs .wrapper h2:before {
 
 @media (max-width: 1050px) {
   main section.breadcrumbs .wrapper h2:before {
-    width: 36%;
+    width: 32%;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   main section.breadcrumbs .wrapper h2:before {
-    width: 32%;
+    width: 28%;
   }
 }
 
@@ -1083,13 +1190,13 @@ main section.breadcrumbs .wrapper h2:after {
 
 @media (max-width: 1050px) {
   main section.breadcrumbs .wrapper h2:after {
-    width: 36%;
+    width: 32%;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   main section.breadcrumbs .wrapper h2:after {
-    width: 32%;
+    width: 28%;
   }
 }
 

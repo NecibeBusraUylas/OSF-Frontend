@@ -17,6 +17,10 @@ main {
 
     @import "./layout/breadcrumbs";
 
+    @media (max-width: 930px) {
+        $length: 25%;
+    }
+
     /* Info ----------------------------------------- */
     section.cart {
         padding-bottom: to-rem(40px);
@@ -29,6 +33,14 @@ main {
             .items {
                 padding: to-rem(100px);
                 position: relative;
+
+                @media (max-width: 1050px) {
+                    padding: to-rem(60px);
+                }
+
+                @media (max-width: 800px) {
+                    padding: to-rem(30px);
+                }
 
                 &:after {
                     position: absolute;
@@ -46,18 +58,35 @@ main {
                     justify-content: space-between;
                     align-items: center;
 
+                    @media (max-width: 800px) {
+                        justify-content: space-around;
+                    }
+
+                    @media (max-width: 600px) {
+                        justify-content: space-between;
+                    }
+
                     &:not(:last-child) {
                         margin-bottom: to-rem(30px);
                     }
 
                     img {
                         width: 10%;
+                        border-radius: $radius;
+
+                        @media (max-width: 800px) {
+                            width: 20;
+                        }
                     }
 
                     .info {
                         width: 50%;
                         padding-left: to-rem(22px);
                         text-align: left;
+
+                        @media (max-width: 800px) {
+                            display: none;
+                        }
 
                         h4 {
                             font-size: to-rem(16px);
@@ -75,6 +104,10 @@ main {
                         @extend %custom-number-input;
 
                         width: 10%;
+
+                        @media (max-width: 800px) {
+                            min-width: 70px;
+                        }
                     }
 
                     h3.price {
@@ -82,6 +115,15 @@ main {
                         text-align: center;
                         font-size: to-rem(30px);
                         color: #45413e;
+
+                        @media (max-width: 800px) {
+                            font-size: to-rem(24px);
+                        }
+
+                        @media (max-width: 600px) {
+                            font-size: to-rem(16px);
+                            width: 15%;
+                        }
                     }
 
                     .delete {
@@ -124,8 +166,30 @@ main {
                     font-size: 1rem;
                 }
 
+                @media (max-width: 1050px) {
+                    padding: to-rem(40px);
+                    flex-direction: column;
+                    align-items: center;
+                }
+
                 .coupon {
                     width: 40%;
+                    text-align: left;
+
+                    @media (max-width: 1050px) {
+                        width: 60%;
+                        margin-bottom: 1rem;
+                    }
+
+                    @media (max-width: 850px) {
+                        width: 95%;
+                    }
+
+                    @media (max-width: 600px) {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
 
                     input[type="text"] {
                         width: 60%;
@@ -139,6 +203,11 @@ main {
 
                         &:focus {
                             border-color: #84bc22;
+                        }
+
+                        @media (max-width: 600px) {
+                            width: 90%;
+                            margin: 0 0 1rem;
                         }
                     }
 
@@ -155,6 +224,10 @@ main {
                             color: #fff;
                             background-color: #84bc22;
                         }
+
+                        @media (max-width: 600px) {
+                            width: 90%;
+                        }
                     }
                 }
 
@@ -167,6 +240,14 @@ main {
 
                     * {
                         color: #45413e;
+                    }
+
+                    @media (max-width: 1050px) {
+                        width: 60%;
+                    }
+
+                    @media (max-width: 850px) {
+                        width: 95%;
                     }
 
                     button {
@@ -189,8 +270,14 @@ main {
                     }
 
                     .buttons {
+                        @media (max-width: 600px) {
+                            flex-direction: column;
+                            align-items: center;
+                        }
+
                         button.update {
-                            width: 35%;
+                            min-width: 35%;
+                            white-space: nowrap;
 
                             @extend %btn;
 
@@ -203,30 +290,57 @@ main {
                                 color: #fff;
                                 background-color: #84bc22;
                             }
+
+                            @media (max-width: 600px) {
+                                width: 90%;
+                                margin: 0 0 1rem;
+                            }
                         }
 
                         input[type="submit"] {
-                            width: 55%;
+                            min-width: 55%;
 
                             @extend %btn;
 
                             color: #fff;
                             border-color: transparent;
+                            background-color: #84bc22;
 
                             &:hover {
                                 border-color: #84bc22;
                                 color: #84bc22;
                                 background-color: #fff;
                             }
+
+                            @media (max-width: 600px) {
+                                width: 90%;
+                            }
                         }
                     }
 
                     .subtotal {
                         margin-top: to-rem(42px);
+
+                        @media (max-width: 600px) {
+                            width: 100%;
+                            justify-content: space-between;
+                        }
                     }
 
                     .shipping {
                         margin-top: to-rem(30px);
+
+                        @media (max-width: 600px) {
+                            width: 100%;
+                            flex-direction: column;
+                            align-items: flex-start;
+
+                            > h5 {
+                                width: 100%;
+                                text-align: left;
+                                margin-bottom: 2rem;
+                            }
+                        }
 
                         ul.radios {
                             width: 45%;
@@ -239,6 +353,10 @@ main {
                                 &:not(:last-child) {
                                     margin-bottom: 1rem;
                                 }
+
+                                @media (max-width: 600px) {
+                                    min-width: 160px;
+                                }
                             }
                         }
                     }
@@ -248,8 +366,17 @@ main {
                         align-items: center;
                         margin-top: to-rem(54px);
 
+                        @media (max-width: 600px) {
+                            width: 100%;
+							justify-content: space-between;
+                        }
+
                         span.price {
                             font-size: to-rem(48px);
+
+                            @media (max-width: 800px) {
+                                font-size: to-rem(24px);
+                            }
                         }
                     }
                 }

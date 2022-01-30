@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   let arrowScreens = document.querySelectorAll(
-    "section.feat-prod .slider-arrows .items .screen"
+    "section.feat-prod .slider-arrows .items"
   );
 
   // Initial states
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
               // Refresh arrow screens
               arrowScreens = document.querySelectorAll(
-                "section.feat-prod .slider-arrows .items .screen"
+                "section.feat-prod .slider-arrows .items"
               );
             }
           }
