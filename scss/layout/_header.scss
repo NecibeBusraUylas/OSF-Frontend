@@ -3,7 +3,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 40;
+    z-index: 60;
     background-color: #fff;
     border-bottom: 1px solid #ccc;
 
@@ -12,10 +12,69 @@ header {
         justify-content: space-between;
         align-items: flex-end;
 
+        @media (max-width: 1010px) {
+            padding-top: 1rem;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            padding: 1rem;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        button#hamburger {
+            background-color: transparent;
+            border: none;
+            margin-right: 1rem;
+            width: 4.1rem;
+            height: 4.1rem;
+            font-size: 1.7rem;
+            color: #45413e;
+            cursor: pointer;
+            display: none;
+            position: relative;
+
+            > span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                visibility: hidden;
+
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+            &:hover {
+                color: #84bc22;
+            }
+
+            @media (max-width: 850px) {
+                display: block;
+            }
+        }
+
         a.logo {
             display: flex;
-            width: 12%;
             align-self: center;
+
+            @media (max-width: 850px) {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            @media (max-width: 640px) {
+                left: unset;
+                right: 1rem;
+                transform: translate(0, -50%);
+            }
 
             img {
                 width: to-rem(64px);
@@ -49,114 +108,336 @@ header {
                 transition: all 0.3s ease;
                 user-select: none;
 
+                @media (max-width: 1280px) {
+                    padding: to-rem(15px) to-rem(15px) to-rem(30px) to-rem(15px);
+                }
+
+                @media (max-width: 480px) {
+                    padding: to-rem(10px);
+                }
+
                 &:hover {
                     color: #fff;
                 }
 
-                > span.arrow-down {
-                    font-size: 0.7em;
-                    margin-left: to-rem(8px);
-                    color: #45413e;
-                    opacity: 0.7;
+                > h2 {
+                    width: 100%;
+                    font-size: 1rem;
+
+                    @media (max-width: 850px) {
+                        &:hover {
+                            color: #84bc22;
+
+                            > span.arrow-down {
+                                color: #84bc22;
+                            }
+                        }
+                    }
+
+                    > span.arrow-down {
+                        font-size: 0.7rem;
+                        margin-left: to-rem(8px);
+                        color: #45413e;
+                        opacity: 0.7;
+
+                        @media (max-width: 850px) {
+                            margin-left: 0;
+                            float: right;
+                            color: white;
+                            transition: all 0.4s ease;
+
+                            &.active {
+                                transform: rotate(180deg);
+                                color: #84bc22;
+                            }
+                        }
+                    }
                 }
             }
         }
 
         nav {
             display: flex;
-            width: 85%;
             justify-self: flex-end;
             justify-content: space-around;
             padding-top: 1rem;
 
-            ul.nav-main > li {
-                text-transform: uppercase;
-                border-bottom: 5px solid transparent;
+            @media (max-width: 1280px) {
+                justify-self: center;
+                justify-content: space-between;
+            }
 
-                &:hover {
+            ul.nav-main {
+                transition: all 0.3s ease;
+
+                @media (max-width: 850px) {
+                    position: absolute;
+                    top: 86px;
+                    left: 0;
+                    transform: translate(-50%, 0);
+                    right: 0;
+                    padding-top: 1rem;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    background-color: #262a32;
+                    opacity: 0;
+                    visibility: hidden;
+
                     * {
-                        color: #fff;
+                        color: white;
                     }
 
-                    background-color: #262a32;
-                    border-bottom: 5px solid #84bc22;
+                    &.active {
+                        transform: translate(0, 0);
+                        opacity: 1;
+                        visibility: visible;
+                    }
+
+                    @media (max-width: 480px) {
+                        padding-bottom: 1rem;
+                    }
                 }
 
-                &.menu-open {
-                    z-index: 20;
+                > li {
+                    text-transform: uppercase;
+                    border-bottom: to-rem(5px) solid transparent;
 
-                    &:hover {
-                        .menu {
-                            opacity: 1;
-                            visibility: visible;
+                    @media (min-width: 851px) {
+                        &:hover {
+                            background-color: #262a32;
+                            border-bottom: to-rem(5px) solid #84bc22;
+
+                            * {
+                                color: white;
+                            }
                         }
                     }
 
-                    .menu {
-                        background-color: #262a32;
+                    @media (max-width: 850px) {
+                        width: 100%;
+                        padding-left: 2%;
+                        padding-right: 2%;
+                        text-align: left;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        flex-wrap: wrap;
+                        cursor: pointer;
 
-                        // Hover effects
-                        position: absolute;
-                        opacity: 0;
-                        visibility: hidden;
-                        left: 0;
-                        right: 0;
-                        top: to-rem(83px);
-                        z-index: 10;
-                        transition: all 0.4s ease;
+                        > h2 {
+                            cursor: pointer;
 
-                        > .wrapper {
-                            display: flex;
-                            flex-direction: row;
-                            flex-wrap: nowrap;
-                            justify-content: space-between;
-                            padding-top: to-rem(30px);
-                            padding-bottom: to-rem(30px);
+                            &:hover, > span:hover {
+                                color: #84bc22;
+                            }
                         }
+                    }
 
-                        * {
-                            font-size: 1rem;
-                            color: #fff;
-                            text-align: left;
-                        }
+                    &.menu-open {
+                        z-index: 20;
 
-                        h3 {
-                            padding-bottom: to-rem(10px);
-                        }
-
-                        li {
-                            padding: to-rem(6px) 0;
-                            text-transform: capitalize;
-                            transition: all 0.2s ease;
-
+                        @media (max-width: 851px) {
                             &:hover {
-                                opacity: 0.6;
+                                .menu {
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
                             }
                         }
 
-                        .prod-cat {
-                            width: 40%;
-                            display: flex;
-                            flex-direction: column;
+                        .menu {
+                            background-color: #262a32;
 
-                            > div {
+                            // Hover effects
+                            position: absolute;
+                            opacity: 0;
+                            visibility: hidden;
+                            left: 0;
+                            right: 0;
+                            top: to-rem(83px);
+                            z-index: 50;
+                            transition: all 0.4s ease;
+
+                            @media (max-width: 1010px) {
+                                top: 83px + 78px;
+                            }
+
+                            @media (max-width: 850px) {
+                                top: 0;
+                                z-index: 100;
+                                width: 100%;
+
+                                &.active {
+                                    position: relative;
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
+                            }
+
+                            > .wrapper {
                                 display: flex;
                                 flex-direction: row;
                                 flex-wrap: nowrap;
                                 justify-content: space-between;
+                                padding-top: to-rem(30px);
+                                padding-bottom: to-rem(30px);
+
+                                @media (max-width: 850px) {
+                                    flex-direction: column;
+                                    padding: 1rem 0 1rem;
+                                }
+
+                                @media (max-width: 480px) {
+                                    width: 100%;
+                                }
                             }
-                        }
 
-                        .sale {
-                            width: 10%;
-                            display: flex;
-                            flex-direction: column;
-                        }
+                            * {
+                                font-size: 1rem;
+                                color: #fff;
+                                text-align: left;
+                            }
 
-                        img {
-                            width: 30%;
-                            height: 100%;
-                            border-radius: $radius;
+                            h3 {
+                                padding-bottom: to-rem(10px);
+
+                                > span.arrow-down {
+                                    color: white;
+                                    font-size: 0.7rem;
+                                    float: right;
+                                    transition: all 0.4s ease;
+                                    opacity: 0;
+                                }
+
+                                @media (max-width: 850px) {
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+
+                                    &:hover {
+                                        color: #84bc22;
+
+                                        > span {
+                                            color: #84bc22;
+                                        }
+                                    }
+
+                                    span.arrow-down {
+                                        opacity: 0.7;
+
+                                        &.active {
+                                            color: #84bc22;
+                                            transform: rotate(180deg);
+                                        }
+                                    }
+                                }
+                            }
+
+                            li {
+                                padding: to-rem(6px) 0;
+                                text-transform: capitalize;
+                                transition: all 0.2s ease;
+
+                                &:hover {
+                                    a {
+                                        color: #84bc22;
+                                    }
+                                }
+                            }
+
+                            .prod-cat {
+                                width: 40%;
+                                display: flex;
+                                flex-direction: column;
+
+                                @media (max-width: 850px) {
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                }
+
+                                > div {
+                                    display: flex;
+                                    flex-direction: row;
+                                    flex-wrap: nowrap;
+                                    justify-content: space-between;
+
+                                    @media (max-width: 850px) {
+                                        padding: 0 1rem;
+                                        visibility: hidden;
+                                        opacity: 0;
+                                        position: absolute;
+                                        left: 0;
+                                        transform: translateX(-10%);
+                                        right: 0;
+                                        top: 0;
+                                        z-index: 70;
+                                        transition: all 0.4s ease;
+
+                                        &.active {
+                                            position: relative;
+                                            transform: translateX(0);
+                                            opacity: 1;
+                                            visibility: visible;
+                                        }
+                                    }
+
+                                    @media (max-width: 480px) {
+                                        padding: 0;
+                                    }
+                                }
+                            }
+
+                            .sale {
+                                width: 10%;
+                                display: flex;
+                                flex-direction: column;
+
+                                @media (max-width: 850px) {
+                                    width: 100%;
+                                    padding: 0.5rem;
+                                }
+
+                                > ul {
+                                    @media (max-width: 850px) {
+                                        padding: 0 1rem;
+                                        visibility: hidden;
+                                        opacity: 0;
+                                        position: absolute;
+                                        left: 0;
+                                        transform: translateX(-10%);
+                                        right: 0;
+                                        top: 0;
+                                        z-index: 70;
+                                        transition: all 0.4s ease;
+
+                                        &.active {
+                                            position: relative;
+                                            transform: translateX(0);
+                                            opacity: 1;
+                                            visibility: visible;
+                                        }
+                                    }
+
+                                    @media (max-width: 480px) {
+                                        padding: 0;
+                                    }
+                                }
+
+                                img {
+                                    width: 30%;
+                                    height: 100%;
+                                    border-radius: $radius;
+
+                                    @media (max-width: 850px) {
+                                        align-self: center;
+                                        width: 60%;
+                                    }
+
+                                    @media (max-width: 480px) {
+                                        align-self: center;
+                                        width: 80%;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -165,60 +446,155 @@ header {
             ul.nav-lang {
                 margin-right: to-rem(50px);
 
+                @media (max-width: 1280px) {
+                    margin-right: 0;
+                }
+
+                @media (max-width: 850px) {
+                    display: none;
+                }
+
                 * {
                     color: #45413e;
                 }
 
                 > li {
                     border-bottom: 5px solid transparent;
+                    color: rgba(#45413e, 0.5);
 
                     &:hover {
                         * {
                             color: #fff;
                         }
 
+                        color: #fff;
                         background-color: #262a32;
                         border-bottom: 5px solid #84bc22;
+                    }
+
+                    &.lang-open, &.currency-open {
+                        z-index: 20;
+
+                        .lang-menu, .currency-menu {
+                            background-color: #262a32;
+
+                            // Hover effects
+                            position: absolute;
+                            opacity: 0;
+                            visibility: hidden;
+                            top: to-rem(83px);
+                            z-index: 10;
+                            transition: all 0.4s ease;
+
+                            @media (max-width: 1010px) {
+                                top: 83px + 78px;
+                            }
+
+                            li {
+                                padding: to-rem(6px) 0;
+                                text-transform: capitalize;
+                                transition: all 0.2s ease;
+                                cursor: pointer;
+
+                                &:hover {
+                                    opacity: 0.6;
+                                }
+                            }
+                        }
+
+                        .lang-menu {
+                            width: to-rem(78px);
+                            transform: translateX(-(to-rem(18px)));
+                        }
+
+                        .currency-menu {
+                            width: to-rem(130px);
+                            transform: translateX(-30%);
+                        }
+                    }
+
+                    &.lang-open:hover {
+                        .lang-menu {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                    }
+
+                    &.currency-open:hover {
+                        .currency-menu {
+                            opacity: 1;
+                            visibility: visible;
+                        }
                     }
                 }
             }
 
-            ul.nav-manage > li {
-                button, a {
-                    background-color: transparent;
-                    border: none;
-                    position: relative;
-                    cursor: pointer;
+            ul.nav-manage {
+                @media (max-width: 850px) {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 20;
+                    justify-content: center;
+                    background-color: #262a32;
+                }
 
-                    svg {
-                        color: #45413e;
-                        opacity: 0.5;
-                        font-size: 1.7rem;
-
-                        path {
-                            transition: all 0.3s ease;
-                        }
-
-                        &:hover {
-                            path {
-                                color: #84bc22;
-                            }
-                        }
+                > li {
+                    @media (max-width: 850px) {
+                        padding: 0;
                     }
 
-                    &#wishlist, &#cart {
-                        > span {
-                            position: absolute;
-                            display: inline-block;
-                            top: -30%;
-                            right: -40%;
-                            font-size: 0.6rem;
-                            color: #84bc22;
-                            background-color: white;
-                            border: 0.15rem solid #84bc22;
-                            padding: to-rem(2px) to-rem(5px);
-                            border-radius: 50%;
-                            z-index: 15;
+                    button, a {
+                        background-color: transparent;
+                        border: none;
+                        position: relative;
+                        cursor: pointer;
+
+                        @media (max-width: 850px) {
+                            padding: to-rem(20px);
+                        }
+
+                        svg {
+                            color: #45413e;
+                            opacity: 0.5;
+                            font-size: 1.7rem;
+
+                            @media (max-width: 850px) {
+                                color: white;
+                            }
+
+                            path {
+                                transition: all 0.3s ease;
+                            }
+
+                            &:hover {
+                                path {
+                                    color: #84bc22;
+                                }
+                            }
+                        }
+
+                        &#wishlist, &#cart {
+                            > span {
+                                position: absolute;
+                                display: inline-block;
+                                top: -40%;
+                                right: -65%;
+                                font-size: 0.7rem;
+                                color: #84bc22;
+                                background-color: white;
+                                border: 0.15rem solid #84bc22;
+                                padding: to-rem(3px) to-rem(6px);
+                                border-radius: 50%;
+                                z-index: 15;
+
+                                @media (max-width: 850px) {
+                                    top: 15%;
+									right: 15%;
+                                    background-color: transparent;
+                                }
+                            }
                         }
                     }
                 }

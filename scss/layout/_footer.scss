@@ -5,6 +5,38 @@ footer {
         display: flex;
         justify-content: space-between;
 
+        @media (max-width: 850px) {
+            flex-direction: column;
+
+            > div.contact, div.categories, div.about {
+                width: 100%;
+                position: relative;
+                margin-bottom: 1rem;
+
+                &.contact {
+                    margin-bottom: 2rem;
+                }
+
+                ul.contact-menu, div.categories-menu, ul.about-menu {
+                    transition-property: transform, opacity;
+                    transition-duration: 0.3s;
+                    transition-timing-function: ease;
+                    position: absolute;
+                    top: 1rem;
+                    transform: translateY(-10%);
+                    opacity: 0;
+                    visibility: hidden;
+
+                    &.active {
+                        transform: translateY(0);
+                        position: relative;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+
         * {
             text-align: left;
             font-size: to-rem(13px);
@@ -16,6 +48,36 @@ footer {
             color: #000;
             font-weight: bold;
             margin-bottom: to-rem(28px);
+
+            span.arrow-down {
+                color: #262a32;
+                font-size: 0.9rem;
+                float: right;
+                transition: all 0.4s ease;
+                opacity: 0;
+            }
+
+            @media (max-width: 850px) {
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    color: #84bc22;
+
+                    span.arrow-down {
+                        color: #84bc22;
+                    }
+                }
+
+                span.arrow-down {
+                    opacity: 0.7;
+
+                    &.active {
+                        color: #84bc22;
+                        transform: rotate(180deg);
+                    }
+                }
+            }
         }
 
         li {
@@ -24,6 +86,17 @@ footer {
 
         .contact {
             width: 17%;
+
+            > span a {
+                margin-top: 1.2rem;
+                color: #84bc22;
+                font-weight: bold;
+                font-size: 1rem;
+
+                &:hover {
+                    color: lighten(#84bc22, 15%);
+                }
+            }
 
             h3 {
                 margin-top: to-rem(28px);
@@ -66,22 +139,29 @@ footer {
         }
 
         .social {
-            ul li {
-                display: inline-block;
-                margin: 0 to-rem(12px);
+            ul {
+                @media (max-width: 850px) {
+                    text-align: center;
+                    padding-top: 1rem;
+                }
 
-                a svg {
-                    color: #45413e;
-                    opacity: 0.5;
-                    font-size: 1.2rem;
+                li {
+                    display: inline-block;
+                    margin: 0 to-rem(12px);
 
-                    path {
-                        transition: all 0.3s ease;
-                    }
+                    a svg {
+                        color: #45413e;
+                        opacity: 0.5;
+                        font-size: 1.2rem;
 
-                    &:hover {
                         path {
-                            color: #84bc22;
+                            transition: color 0.3s ease;
+                        }
+
+                        &:hover {
+                            path {
+                                color: #84bc22;
+                            }
                         }
                     }
                 }

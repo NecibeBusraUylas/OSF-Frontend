@@ -1,6 +1,10 @@
 section.feat-prod {
     background-color: #262a32;
 
+    @media (max-width: 580px) {
+        display: none;
+    }
+
     .wrapper {
         padding-top: to-rem(35px);
         padding-bottom: to-rem(64px);
@@ -29,6 +33,10 @@ section.feat-prod {
                 * {
                     margin: 0 0.3rem;
                     color: #fff;
+                }
+
+                @media (max-width: 960px) {
+                    width: 75%;
                 }
 
                 button {
@@ -62,6 +70,10 @@ section.feat-prod {
             display: flex;
             flex-wrap: wrap;
             margin: 0 -1%;
+            @media (max-width: 960px) {
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
 
             .item {
                 width: 25% - 2 * 1%;
@@ -70,6 +82,11 @@ section.feat-prod {
                 background-color: #fff;
                 border-radius: $radius + 2px;
                 text-align: center;
+
+                @media (max-width: 960px) {
+                    width: 43%;
+                    margin: 1rem;
+                }
 
                 .img {
                     height: to-rem(260px);
